@@ -1772,306 +1772,54 @@ vs Other Modes</h1>
 <p>First, load all necessary packages.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcImRwbHlyXCIpICAjIExvYWQgZHBseXIgcGFja2FnZVxubGlicmFyeShcInBseXJcIikgICAjIExvYWQgcGx5ciBwYWNrYWdlXG5gYGAifQ== -->
-<pre class="r"><code>library(&quot;dplyr&quot;)  # Load dplyr package
-library(&quot;plyr&quot;)   # Load plyr package</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBsaWJyYXJ5KFwiZHBseXJcIikgICAgICAjIExvYWQgZHBseXIgcGFja2FnZVxuIyBsaWJyYXJ5KFwicGx5clwiKSAgICAgICAjIExvYWQgcGx5ciBwYWNrYWdlXG4jIGxpYnJhcnkoXCJyZWFkclwiKSAgICAgICMgTG9hZCByZWFkciBwYWNrYWdlXG4jIGxpYnJhcnkoXCJwdXJyclwiKSAgICAgICMgTG9hZCBwdXJyciBwYWNrYWdlXG5saWJyYXJ5KFwiZGF0YS50YWJsZVwiKSAjIExvYWQgZGF0YS50YWJsZSBwYWNrYWdlIGZvciBmcmVhZFxuYGBgIn0= -->
+<pre class="r"><code># library(&quot;dplyr&quot;)      # Load dplyr package
+# library(&quot;plyr&quot;)       # Load plyr package
+# library(&quot;readr&quot;)      # Load readr package
+# library(&quot;purrr&quot;)      # Load purrr package
+library(&quot;data.table&quot;) # Load data.table package for fread</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuWW91IGhhdmUgbG9hZGVkIHBseXIgYWZ0ZXIgZHBseXIgLSB0aGlzIGlzIGxpa2VseSB0byBjYXVzZSBwcm9ibGVtcy5cbklmIHlvdSBuZWVkIGZ1bmN0aW9ucyBmcm9tIGJvdGggcGx5ciBhbmQgZHBseXIsIHBsZWFzZSBsb2FkIHBseXIgZmlyc3QsIHRoZW4gZHBseXI6XG5saWJyYXJ5KHBseXIpOyBsaWJyYXJ5KGRwbHlyKVxuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYcGx5cuKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6ZHBseXLigJk6XG5cbiAgICBhcnJhbmdlLCBjb3VudCwgZGVzYywgZmFpbHdpdGgsIGlkLCBtdXRhdGUsIHJlbmFtZSwgc3VtbWFyaXNlLFxuICAgIHN1bW1hcml6ZVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnB1cnJy4oCZOlxuXG4gICAgY29tcGFjdFxuIn0= -->
-<pre><code>-------------------------------------------------------------------------------
-You have loaded plyr after dplyr - this is likely to cause problems.
-If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-library(plyr); library(dplyr)
--------------------------------------------------------------------------------
-
-Attaching package: ‘plyr’
-
-The following objects are masked from ‘package:dplyr’:
-
-    arrange, count, desc, failwith, id, mutate, rename, summarise,
-    summarize
-
-The following object is masked from ‘package:purrr’:
-
-    compact</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcInJlYWRyXCIpICAjIExvYWQgcmVhZHIgcGFja2FnZVxubGlicmFyeShcInB1cnJyXCIpICAjIExvYWQgcHVycnIgcGFja2FnZVxubGlicmFyeShcImRhdGEudGFibGVcIilcbmBgYCJ9 -->
-<pre class="r"><code>library(&quot;readr&quot;)  # Load readr package
-library(&quot;purrr&quot;)  # Load purrr package
-library(&quot;data.table&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2RhdGEudGFibGUnOlxuICBtZXRob2QgICAgICAgICAgIGZyb21cbiAgcHJpbnQuZGF0YS50YWJsZSAgICAgXG5kYXRhLnRhYmxlIDEuMTQuMiB1c2luZyAxIHRocmVhZHMgKHNlZSA/Z2V0RFR0aHJlYWRzKS4gIExhdGVzdCBuZXdzOiByLWRhdGF0YWJsZS5jb21cbioqKioqKioqKipcblRoaXMgaW5zdGFsbGF0aW9uIG9mIGRhdGEudGFibGUgaGFzIG5vdCBkZXRlY3RlZCBPcGVuTVAgc3VwcG9ydC4gSXQgc2hvdWxkIHN0aWxsIHdvcmsgYnV0IGluIHNpbmdsZS10aHJlYWRlZCBtb2RlLlxuVGhpcyBpcyBhIE1hYy4gUGxlYXNlIHJlYWQgaHR0cHM6Ly9tYWMuci1wcm9qZWN0Lm9yZy9vcGVubXAvLiBQbGVhc2UgZW5nYWdlIHdpdGggQXBwbGUgYW5kIGFzayB0aGVtIGZvciBzdXBwb3J0LiBDaGVjayByLWRhdGF0YWJsZS5jb20gZm9yIHVwZGF0ZXMsIGFuZCBvdXIgTWFjIGluc3RydWN0aW9ucyBoZXJlOiBodHRwczovL2dpdGh1Yi5jb20vUmRhdGF0YWJsZS9kYXRhLnRhYmxlL3dpa2kvSW5zdGFsbGF0aW9uLiBBZnRlciBzZXZlcmFsIHllYXJzIG9mIG1hbnkgcmVwb3J0cyBvZiBpbnN0YWxsYXRpb24gcHJvYmxlbXMgb24gTWFjLCBpdCdzIHRpbWUgdG8gZ2luZ2VybHkgcG9pbnQgb3V0IHRoYXQgdGhlcmUgaGF2ZSBiZWVuIG5vIHNpbWlsYXIgcHJvYmxlbXMgb24gV2luZG93cyBvciBMaW51eC5cbioqKioqKioqKipcblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmGRhdGEudGFibGXigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmRwbHly4oCZOlxuXG4gICAgYmV0d2VlbiwgZmlyc3QsIGxhc3RcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpwdXJycuKAmTpcblxuICAgIHRyYW5zcG9zZVxuIn0= -->
-<pre><code>Registered S3 method overwritten by &#39;data.table&#39;:
-  method           from
-  print.data.table     
-data.table 1.14.2 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
-**********
-This installation of data.table has not detected OpenMP support. It should still work but in single-threaded mode.
-This is a Mac. Please read https://mac.r-project.org/openmp/. Please engage with Apple and ask them for support. Check r-datatable.com for updates, and our Mac instructions here: https://github.com/Rdatatable/data.table/wiki/Installation. After several years of many reports of installation problems on Mac, it&#39;s time to gingerly point out that there have been no similar problems on Windows or Linux.
-**********
-
-Attaching package: ‘data.table’
-
-The following objects are masked from ‘package:dplyr’:
-
-    between, first, last
-
-The following object is masked from ‘package:purrr’:
-
-    transpose</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Next, merge all .csv files into one dataframe.</p>
+<p>Next, read the .csv files that meet the latest format for CitiBike
+rider data.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBGcm9tIGh0dHBzOi8vc3RhdGlzdGljc2dsb2JlLmNvbS9tZXJnZS1jc3YtZmlsZXMtaW4tclxuXG4jIElkZW50aWZ5IGFsbCBDU1YgZmlsZXNcbiMgQ0JfZGF0YSA8LSBsaXN0LmZpbGVzKHBhdGggPSBcIkNpdGlCaWtlX2RhdGEvUmF3L05ld19Gb3JtYXRcIiwgIFxuIyAgICAgICAgICAgICAgICAgICAgICAgIHBhdHRlcm4gPSBcIiouY3N2XCIsIGZ1bGwubmFtZXMgPSBUUlVFKSAlPiUgXG4jICAgbGFwcGx5KHJlYWRfY3N2KSAlPiUgICAgIyBTdG9yZSBhbGwgZmlsZXMgaW4gbGlzdFxuIyAgIGJpbmRfcm93cyAgICAgICAgICAgICAgICMgQ29tYmluZSBkYXRhIHNldHMgaW50byBvbmUgZGF0YSBzZXQgXG4jIGhlYWQoQ0JfZGF0YSkgICAgICAgICAgICAjIFByaW50IGRhdGEgdG8gUlN0dWRpbyBjb25zb2xlXG5cbiMgSWRlbnRpZnkgYWxsIENTViBmaWxlc1xuQ0JfZGF0YSA8LSBsaXN0LmZpbGVzKHBhdGggPSBcIkNpdGlCaWtlX2RhdGEvUmF3L05ld19Gb3JtYXRcIixcbiAgICAgICAgICAgICAgICAgICAgICAgcGF0dGVybiA9IFwiKi5jc3ZcIiwgZnVsbC5uYW1lcyA9IFRSVUUpICU+JVxuICBsYXBwbHkocmVhZF9jc3YpICU+JSAgICAgICAgICAgICMgU3RvcmUgYWxsIGZpbGVzIGluIGxpc3RcbiAgcmVkdWNlKGZ1bGxfam9pbiwgYnkgPSBcImlkXCIpICAgICMgRnVsbC1qb2luIGRhdGEgc2V0cyBpbnRvIG9uZSBkYXRhIHNldFxuYGBgIn0= -->
-<pre class="r"><code># From https://statisticsglobe.com/merge-csv-files-in-r
-
-# Identify all CSV files
-# CB_data &lt;- list.files(path = &quot;CitiBike_data/Raw/New_Format&quot;,  
-#                        pattern = &quot;*.csv&quot;, full.names = TRUE) %&gt;% 
-#   lapply(read_csv) %&gt;%    # Store all files in list
-#   bind_rows               # Combine data sets into one data set 
-# head(CB_data)            # Print data to RStudio console
-
-# Identify all CSV files
-CB_data &lt;- list.files(path = &quot;CitiBike_data/Raw/New_Format&quot;,
-                       pattern = &quot;*.csv&quot;, full.names = TRUE) %&gt;%
-  lapply(read_csv) %&gt;%            # Store all files in list
-  reduce(full_join, by = &quot;id&quot;)    # Full-join data sets into one data set</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0JfRGF0YSA8LSBmcmVhZChcIkNpdGlCaWtlX2RhdGEvMjAyMTAyLTIwMjIwNC1jaXRpYmlrZS10cmlwLWRhdGEuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>CB_Data &lt;- fread(&quot;CitiBike_data/202102-202204-citibike-trip-data.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoifC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfFxufD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09fFxufC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfFxufD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09fFxuIn0= -->
+<pre><code>|--------------------------------------------------|
+|==================================================|
+|--------------------------------------------------|
+|==================================================|</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNjQ5OTgzIENvbHVtbnM6IDEzXG7ilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgICg1KTogcmlkZV9pZCwgcmlkZWFibGVfdHlwZSwgc3RhcnRfc3RhdGlvbl9uYW1lLCBlbmRfc3RhdGlvbl9uYW1lLCBtZW1iZS4uLlxuZGJsICAoNik6IHN0YXJ0X3N0YXRpb25faWQsIGVuZF9zdGF0aW9uX2lkLCBzdGFydF9sYXQsIHN0YXJ0X2xuZywgZW5kX2xhdCwgZW4uLi5cbmR0dG0gKDIpOiBzdGFydGVkX2F0LCBlbmRlZF9hdFxuXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 649983 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTUzMTA5NCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 1531094 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjA2NzY2OSBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 2067669 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjcyNDE2NSBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 2724165 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzE3ODA4MSBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 3178081 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzA4NDkxNCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 3084914 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzA3MjgzMyBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 3072833 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzI4MDU2MCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 3280560 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzA2OTIzNSBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNik6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgZW5kX3MuLi5cbmRibCAgKDUpOiBzdGFydF9zdGF0aW9uX2lkLCBzdGFydF9sYXQsIHN0YXJ0X2xuZywgZW5kX2xhdCwgZW5kX2xuZ1xuZHR0bSAoMik6IHN0YXJ0ZWRfYXQsIGVuZGVkX2F0XG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 3069235 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (6): ride_id, rideable_type, start_station_name, end_station_name, end_s...
-dbl  (5): start_station_id, start_lat, start_lng, end_lat, end_lng
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjE1OTI4NCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 2159284 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTc0ODI4NyBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 1748287 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTA1MjQxOCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 1052418 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTIzMzcxNCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 1233714 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTg5MzQ0NCBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 1893444 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogT25lIG9yIG1vcmUgcGFyc2luZyBpc3N1ZXMsIHNlZSBgcHJvYmxlbXMoKWAgZm9yIGRldGFpbHNcbiJ9 -->
-<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjMxOTYxMyBDb2x1bW5zOiAxM1xu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoNSk6IHJpZGVfaWQsIHJpZGVhYmxlX3R5cGUsIHN0YXJ0X3N0YXRpb25fbmFtZSwgZW5kX3N0YXRpb25fbmFtZSwgbWVtYmUuLi5cbmRibCAgKDYpOiBzdGFydF9zdGF0aW9uX2lkLCBlbmRfc3RhdGlvbl9pZCwgc3RhcnRfbGF0LCBzdGFydF9sbmcsIGVuZF9sYXQsIGVuLi4uXG5kdHRtICgyKTogc3RhcnRlZF9hdCwgZW5kZWRfYXRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbkVycm9yIGluIGBmbigpYDpcbiEgSm9pbiBjb2x1bW5zIG11c3QgYmUgcHJlc2VudCBpbiBkYXRhLlxu4pyWIFByb2JsZW0gd2l0aCBgaWRgLlxuQmFja3RyYWNlOlxuIDEuIC4uLiAlPiUgcmVkdWNlKGZ1bGxfam9pbiwgYnkgPSBcImlkXCIpXG4gMi4gcHVycnI6OnJlZHVjZSguLCBmdWxsX2pvaW4sIGJ5ID0gXCJpZFwiKVxuIDMuIHB1cnJyOjo6cmVkdWNlX2ltcGwoLngsIC5mLCAuLi4sIC5pbml0ID0gLmluaXQsIC5kaXIgPSAuZGlyKVxuIDUuIGRwbHlyOjo6ZnVsbF9qb2luLmRhdGEuZnJhbWUob3V0LCBlbHQsIC4uLilcbiJ9 -->
-<pre><code>Rows: 2319613 Columns: 13
-── Column specification ─────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ride_id, rideable_type, start_station_name, end_station_name, membe...
-dbl  (6): start_station_id, end_station_id, start_lat, start_lng, end_lat, en...
-dttm (2): started_at, ended_at
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-Error in `fn()`:
-! Join columns must be present in data.
-✖ Problem with `id`.
-Backtrace:
- 1. ... %&gt;% reduce(full_join, by = &quot;id&quot;)
- 2. purrr::reduce(., full_join, by = &quot;id&quot;)
- 3. purrr:::reduce_impl(.x, .f, ..., .init = .init, .dir = .dir)
- 5. dplyr:::full_join.data.frame(out, elt, ...)</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChDQl9EYXRhKVxuYGBgIn0= -->
+<pre class="r"><code>head(CB_Data)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEudGFibGUiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjEzLCJzdW1tYXJ5IjpbXX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE3VlZUMmpUWUJULzFxNnI2MnhYbENFS1FrNURIQXRwa2lZTmlqWnBVamQxYzVzT2QxQnEybVJiYUpiTUpIVXFjM3FiRncvaTFZdnU1QVM5QzhxdUlwNjg3T0JCUVZRODZGSHdZUDN5NTB2YmJNb0VMYVF2djk5Nzczdi92cjVPaVROVWFpWUZBSWlEN3E0NGlDZmdLMGhNbnlzUEZ3RG9qa0hRQmJwQnJ5dXZRcU85OENVTm55eDhlZ0pGVmhCNGloSlpTcFJLRXNjeTVaQm5JTXVYeXh4ZnlndU1TQ00rVHdvRmtzdHgrUkxOY0NMSElUN0hsUXEwVk9KSmdXWUtOTXNndmtTSW9zQ3lPWWtsUkU0czU4UHpKYjRrOEhraXoxTmxobU81U0Y1OWlsbXJxMHFscXRYVi8wMkJlTWFOekc5bVJwTzNBT0EzKzQ1TmI3Z3ljK1pGMFpOSGJuczQvVjN3OU9tSGI0cHVxenRhbktqcHNtMEhaY1FDTWpseDV1em9UTTBKWUk4SG5haW5jOTAwMU1BVGtmSHBjeVVvZnJabmQ5SExwdS80UlQrN3lRZCtka2ZYZ0ovZEhWK3VIUXF6aXpYL0lxRjQ4N2M1ZE14bWo0UVZhT3lzZ3cxaUU3SlZ4L2dycUszN3h1U2FhZmlxY2ROMkxObFEvcGw2WUV4V05Cc2FRQXBhU0JqSlFOcy9LenNUVDdJa1RlRUV1c3RKbXN6Uk9FSHREREk1S29mbnlDanNqTkF2WVd6QnI0QnNTMzJ2WU1KU1BMcmMwQjJ2eUVCMTRMUTZPNnRham8xTjZLNGFGbDNYTldObnp2M25NWXIxVmZrMmp5MTB0QTFFbnNVSk5peVVaam1jWUZwMWt5Uk9rTC9STWhSWDJBWUM0TjNTb2xoYjd6NzUrVUpSUEgvWXZwejlzRlZXc21QVEJ6VWtrZC9HMUkxVEkyK2V6RzlNTGIrKyszVjlZYXU4T1RnK1VqV1JiTVdyZm1rK2YvYStLTTVJcTAvdkNURE9RT09EOGJHRkwrMjJINzg4Z1dSYnZLR2wxVmVmTnFaV3ZneTlBM0VYVHk3dnI3Ynd5cmUzOThjZUlSbnBZRTlOdGh1eWp0Q0N1bEJWclozb3RrV2QyNkRYTXBkd1ExNVE3V0JkeCtET0FjMW04MGZrSjQwY1VvcnN5UGlzQlYyaWl3VWRrL1dPQ2tabWFZcGEwWlFBcGwwb1YzVzE0bHhiUkJjb1pUdXk1Y0Q5S0tPYnRrczFsSGE4eDdPb3dHOUhNNDJLR3dodDlrNU5HQ2dMVDlqT1B0UE9oOWE5L2lsNkdCQVJ4aHlxdy9WcjZYMFlhdE4rYnl2Qk1Md2wxdEdicExub1JvVGRpYm4vaTRsSVU3dXNDTkhmTU55a2xlSGFmTU9vRDFOdWx6eTEvMGtIN3oxdDcyay9aQUlOTElIbXJocHptb0hxVCtoeVZVWFhKUU9IN3cwTlg3UTBBOVdXZ3F5Tk82WVRYcXRVemRRUjR5L29uNzhBVlBkTjBnNElBQUE9In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ride_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rideable_type"],"name":[2],"type":["chr"],"align":["left"]},{"label":["started_at"],"name":[3],"type":["S3: POSIXct"],"align":["right"]},{"label":["ended_at"],"name":[4],"type":["S3: POSIXct"],"align":["right"]},{"label":["start_station_name"],"name":[5],"type":["chr"],"align":["left"]},{"label":["start_station_id"],"name":[6],"type":["chr"],"align":["left"]},{"label":["end_station_name"],"name":[7],"type":["chr"],"align":["left"]},{"label":["end_station_id"],"name":[8],"type":["chr"],"align":["left"]},{"label":["start_lat"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["start_lng"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["end_lat"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["end_lng"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["member_casual"],"name":[13],"type":["chr"],"align":["left"]}],"data":[{"1":"BBA33D73DECE976F","2":"docked_bike","3":"2021-02-26 16:38:54","4":"2021-02-26 16:44:37","5":"E 84 St & Park Ave","6":"7243.04","7":"E 78 St & 2 Ave","8":"7057.07","9":"40.77863","10":"-73.95772","11":"40.77280","12":"-73.95578","13":"casual"},{"1":"B63D7AFF9AC5B6D4","2":"docked_bike","3":"2021-02-17 11:09:11","4":"2021-02-17 11:26:47","5":"Macon St & Nostrand Ave","6":"4214.03","7":"Bond St & Fulton St","8":"4479.06","9":"40.68098","10":"-73.95005","11":"40.68962","12":"-73.98304","13":"member"},{"1":"52B829195C469D99","2":"docked_bike","3":"2021-02-26 18:33:29","4":"2021-02-26 19:05:41","5":"Macon St & Nostrand Ave","6":"4214.03","7":"Lefferts Pl & Franklin Ave","8":"4222.02","9":"40.68098","10":"-73.95005","11":"40.68034","12":"-73.95577","13":"casual"},{"1":"19C84ECA2B468476","2":"docked_bike","3":"2021-02-26 12:48:35","4":"2021-02-26 13:07:24","5":"Macon St & Nostrand Ave","6":"4214.03","7":"Bond St & Fulton St","8":"4479.06","9":"40.68098","10":"-73.95005","11":"40.68962","12":"-73.98304","13":"member"},{"1":"C0DDB771E70D9DF5","2":"docked_bike","3":"2021-02-25 17:23:22","4":"2021-02-25 17:28:20","5":"Madison Ave & E 26 St","6":"6131.12","7":"W 37 St & 5 Ave","8":"6398.06","9":"40.74269","10":"-73.98671","11":"40.75038","12":"-73.98339","13":"member"},{"1":"BEACBA505A3F6979","2":"docked_bike","3":"2021-02-24 17:22:21","4":"2021-02-24 17:28:01","5":"Madison Ave & E 26 St","6":"6131.12","7":"W 37 St & 5 Ave","8":"6398.06","9":"40.74269","10":"-73.98671","11":"40.75038","12":"-73.98339","13":"member"}],"options":{"columns":{"min":{},"max":[10],"total":[13]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the
-toolbar or by pressing <em>Cmd+Option+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and
-output will be saved alongside it (click the <em>Preview</em> button or
-press <em>Cmd+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the
-editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not
-run any R code chunks. Instead, the output of the chunk when it was last
-run in the editor is displayed.</p>
+<p>Then, merge all dataframes into one unified dataframe.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0JfZGF0YSA9IHJiaW5kKENCXzIwMjEwMiwgQ0JfMjAyMTAzLCBDQl8yMDIxMDQsIENCXzIwMjEwNSwgQ0JfMjAyMTA2LFxuICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMDcsIENCXzIwMjEwOCwgQ0JfMjAyMTA5LCBDQl8yMDIxMTAsIENCXzIwMjExMSxcbiAgICAgICAgICAgICAgICAgICAgQ0JfMjAyMTEyLCBDQl8yMDIyMDEsIENCXzIwMjIwMiwgQ0JfMjAyMjAzLCBDQl8yMDIyMDQpXG5cblxuYGBgIn0= -->
+<pre class="r"><code>CB_data = rbind(CB_202102, CB_202103, CB_202104, CB_202105, CB_202106,
+                    CB_202107, CB_202108, CB_202109, CB_202110, CB_202111,
+                    CB_202112, CB_202201, CB_202202, CB_202203, CB_202204)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KbGlicmFyeSgiZHBseXIiKSAgICAgICMgTG9hZCBkcGx5ciBwYWNrYWdlCmxpYnJhcnkoInBseXIiKSAgICAgICAjIExvYWQgcGx5ciBwYWNrYWdlCmxpYnJhcnkoInJlYWRyIikgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQpsaWJyYXJ5KCJwdXJyciIpICAgICAgIyBMb2FkIHB1cnJyIHBhY2thZ2UKbGlicmFyeSgiZGF0YS50YWJsZSIpICMgTG9hZCBkYXRhLnRhYmxlIHBhY2thZ2UgZm9yIGZyZWFkCmBgYAoKTmV4dCwgbWVyZ2UgYWxsIC5jc3YgZmlsZXMgaW50byBvbmUgZGF0YWZyYW1lLgpgYGB7cn0KIyBGcm9tIGh0dHBzOi8vc3RhdGlzdGljc2dsb2JlLmNvbS9tZXJnZS1jc3YtZmlsZXMtaW4tcgoKIyBJZGVudGlmeSBhbGwgQ1NWIGZpbGVzCiMgQ0JfZGF0YSA8LSBsaXN0LmZpbGVzKHBhdGggPSAiQ2l0aUJpa2VfZGF0YS9SYXcvTmV3X0Zvcm1hdCIsICAKIyAgICAgICAgICAgICAgICAgICAgICAgIHBhdHRlcm4gPSAiKi5jc3YiLCBmdWxsLm5hbWVzID0gVFJVRSkgJT4lIAojICAgbGFwcGx5KHJlYWRfY3N2KSAlPiUgICAgIyBTdG9yZSBhbGwgZmlsZXMgaW4gbGlzdAojICAgYmluZF9yb3dzICAgICAgICAgICAgICAgIyBDb21iaW5lIGRhdGEgc2V0cyBpbnRvIG9uZSBkYXRhIHNldCAKIyBoZWFkKENCX2RhdGEpICAgICAgICAgICAgIyBQcmludCBkYXRhIHRvIFJTdHVkaW8gY29uc29sZQoKIyBJZGVudGlmeSBhbGwgQ1NWIGZpbGVzCkNCX2RhdGEgPC0gbGlzdC5maWxlcyhwYXRoID0gIkNpdGlCaWtlX2RhdGEvUmF3L05ld19Gb3JtYXQiLAogICAgICAgICAgICAgICAgICAgICAgIHBhdHRlcm4gPSAiKi5jc3YiLCBmdWxsLm5hbWVzID0gVFJVRSkgJT4lCiAgbGFwcGx5KHJlYWRfY3N2KSAlPiUgICAgICAgICAgICAjIFN0b3JlIGFsbCBmaWxlcyBpbiBsaXN0CiAgcmVkdWNlKGZ1bGxfam9pbiwgYnkgPSAiaWQiKSAgICAjIEZ1bGwtam9pbiBkYXRhIHNldHMgaW50byBvbmUgZGF0YSBzZXQKYGBgCgpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ21kK09wdGlvbitJKi4KCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ21kK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuIAoKVGhlIHByZXZpZXcgc2hvd3MgeW91IGEgcmVuZGVyZWQgSFRNTCBjb3B5IG9mIHRoZSBjb250ZW50cyBvZiB0aGUgZWRpdG9yLiBDb25zZXF1ZW50bHksIHVubGlrZSAqS25pdCosICpQcmV2aWV3KiBkb2VzIG5vdCBydW4gYW55IFIgY29kZSBjaHVua3MuIEluc3RlYWQsIHRoZSBvdXRwdXQgb2YgdGhlIGNodW5rIHdoZW4gaXQgd2FzIGxhc3QgcnVuIGluIHRoZSBlZGl0b3IgaXMgZGlzcGxheWVkLgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KIyBsaWJyYXJ5KCJkcGx5ciIpICAgICAgIyBMb2FkIGRwbHlyIHBhY2thZ2UKIyBsaWJyYXJ5KCJwbHlyIikgICAgICAgIyBMb2FkIHBseXIgcGFja2FnZQojIGxpYnJhcnkoInJlYWRyIikgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQojIGxpYnJhcnkoInB1cnJyIikgICAgICAjIExvYWQgcHVycnIgcGFja2FnZQpsaWJyYXJ5KCJkYXRhLnRhYmxlIikgIyBMb2FkIGRhdGEudGFibGUgcGFja2FnZSBmb3IgZnJlYWQKYGBgCk5leHQsIHJlYWQgdGhlIC5jc3YgZmlsZXMgdGhhdCBtZWV0IHRoZSBsYXRlc3QgZm9ybWF0IGZvciBDaXRpQmlrZSByaWRlciBkYXRhLgpgYGB7cn0KQ0JfRGF0YSA8LSBmcmVhZCgiQ2l0aUJpa2VfZGF0YS8yMDIxMDItMjAyMjA0LWNpdGliaWtlLXRyaXAtZGF0YS5jc3YiKQpoZWFkKENCX0RhdGEpCmBgYApUaGVuLCBtZXJnZSBhbGwgZGF0YWZyYW1lcyBpbnRvIG9uZSB1bmlmaWVkIGRhdGFmcmFtZS4KYGBge3J9CkNCX2RhdGEgPSByYmluZChDQl8yMDIxMDIsIENCXzIwMjEwMywgQ0JfMjAyMTA0LCBDQl8yMDIxMDUsIENCXzIwMjEwNiwKICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMDcsIENCXzIwMjEwOCwgQ0JfMjAyMTA5LCBDQl8yMDIxMTAsIENCXzIwMjExMSwKICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMTIsIENCXzIwMjIwMSwgQ0JfMjAyMjAyLCBDQl8yMDIyMDMsIENCXzIwMjIwNCkKCgpgYGAKCg==</div>
 
 
 

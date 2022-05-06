@@ -5,34 +5,23 @@ output: html_notebook
 
 First, load all necessary packages.
 ```{r}
-library("dplyr")      # Load dplyr package
-library("plyr")       # Load plyr package
-library("readr")      # Load readr package
-library("purrr")      # Load purrr package
+# library("dplyr")      # Load dplyr package
+# library("plyr")       # Load plyr package
+# library("readr")      # Load readr package
+# library("purrr")      # Load purrr package
 library("data.table") # Load data.table package for fread
 ```
-
-Next, merge all .csv files into one dataframe.
+Next, read the .csv files that meet the latest format for CitiBike rider data.
 ```{r}
-# From https://statisticsglobe.com/merge-csv-files-in-r
-
-# Identify all CSV files
-# CB_data <- list.files(path = "CitiBike_data/Raw/New_Format",  
-#                        pattern = "*.csv", full.names = TRUE) %>% 
-#   lapply(read_csv) %>%    # Store all files in list
-#   bind_rows               # Combine data sets into one data set 
-# head(CB_data)            # Print data to RStudio console
-
-# Identify all CSV files
-CB_data <- list.files(path = "CitiBike_data/Raw/New_Format",
-                       pattern = "*.csv", full.names = TRUE) %>%
-  lapply(read_csv) %>%            # Store all files in list
-  reduce(full_join, by = "id")    # Full-join data sets into one data set
+CB_Data <- fread("CitiBike_data/202102-202204-citibike-trip-data.csv")
+head(CB_Data)
 ```
+Then, merge all dataframes into one unified dataframe.
+```{r}
+CB_data = rbind(CB_202102, CB_202103, CB_202104, CB_202105, CB_202106,
+                    CB_202107, CB_202108, CB_202109, CB_202110, CB_202111,
+                    CB_202112, CB_202201, CB_202202, CB_202203, CB_202204)
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```
 
