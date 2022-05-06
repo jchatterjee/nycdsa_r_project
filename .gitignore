@@ -230,3 +230,4 @@ CitiBike_data/Zip/202202-citibike-tripdata.csv.zip
 CitiBike_data/Zip/202203-citibike-tripdata.csv.zip
 CitiBike_data/Zip/202204-citibike-tripdata.csv.zip
 JChatterjee_CitiBike_WebScraper.ipynb
+*.csv
