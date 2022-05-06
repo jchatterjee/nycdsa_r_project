@@ -17,15 +17,26 @@ CB_Data <- fread("CitiBike_data/202102-202204-citibike-trip-data.csv")
 ```
 Then, make sure all values for docked_bike and classic_bike are the same.
 ```{r}
-CB_Data <- replace(CB_Data$rideable_type, 
-                   CB_Data$rideable_type == "docked_bike",
-                   "classic_bike")
-CB_Data <- replace(CB_Data$rideable_type, 
-                   CB_Data$rideable_type == "classic_bike",
-                   "Classic Bike")
-CB_Data <- replace(CB_Data$rideable_type, 
-                   CB_Data$rideable_type == "electric_bike",
-                   "Electric Bike")
+CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] <- "classic_bike"
+# CB_Data <- replace(CB_Data$rideable_type, 
+#                    CB_Data$rideable_type == "classic_bike",
+#                    "Classic Bike")
+# CB_Data <- replace(CB_Data$rideable_type, 
+#                    CB_Data$rideable_type == "electric_bike",
+#                    "Electric Bike")
+head(CB_Data)
+```
+Now, calculate actual duration of ride as well as year and month.
+```{r}
+setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
+setDT(CB_Data)[, month := format(as.Date(started_at), "%m") ]
+CB_Data$duration = as.numeric(
+                              difftime(
+                                CB_Data$ended_at, 
+                                CB_Data$started_at, 
+                                units ="mins"
+                                )
+                              )
 head(CB_Data)
 ```
 
