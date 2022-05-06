@@ -14,14 +14,18 @@ library("data.table") # Load data.table package for fread
 Next, read the .csv files that meet the latest format for CitiBike rider data.
 ```{r}
 CB_Data <- fread("CitiBike_data/202102-202204-citibike-trip-data.csv")
-head(CB_Data)
 ```
-Then, merge all dataframes into one unified dataframe.
+Then, make sure all values for docked_bike and classic_bike are the same.
 ```{r}
-CB_data = rbind(CB_202102, CB_202103, CB_202104, CB_202105, CB_202106,
-                    CB_202107, CB_202108, CB_202109, CB_202110, CB_202111,
-                    CB_202112, CB_202201, CB_202202, CB_202203, CB_202204)
-
-
+CB_Data <- replace(CB_Data$rideable_type, 
+                   CB_Data$rideable_type == "docked_bike",
+                   "classic_bike")
+CB_Data <- replace(CB_Data$rideable_type, 
+                   CB_Data$rideable_type == "classic_bike",
+                   "Classic Bike")
+CB_Data <- replace(CB_Data$rideable_type, 
+                   CB_Data$rideable_type == "electric_bike",
+                   "Electric Bike")
+head(CB_Data)
 ```
 

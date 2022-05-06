@@ -23,4 +23,7 @@ CB_data = rbind(CB_202102, CB_202103, CB_202104, CB_202105, CB_202106,
                 CB_202107, CB_202108, CB_202109, CB_202110, CB_202111,
                 CB_202112, CB_202201, CB_202202, CB_202203, CB_202204)
 
+# Delete unnecessary columns
+CB_data <- CB_data[, -c(1,5,6,7,8)]
+
 fwrite(CB_data, file = "CitiBike_data/202102-202204-citibike-trip-data.csv")

@@ -1806,20 +1806,23 @@ rider data.</p>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Then, merge all dataframes into one unified dataframe.</p>
+<p>Then, make sure all values for docked_bike and classic_bike are the
+same.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0JfZGF0YSA9IHJiaW5kKENCXzIwMjEwMiwgQ0JfMjAyMTAzLCBDQl8yMDIxMDQsIENCXzIwMjEwNSwgQ0JfMjAyMTA2LFxuICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMDcsIENCXzIwMjEwOCwgQ0JfMjAyMTA5LCBDQl8yMDIxMTAsIENCXzIwMjExMSxcbiAgICAgICAgICAgICAgICAgICAgQ0JfMjAyMTEyLCBDQl8yMDIyMDEsIENCXzIwMjIwMiwgQ0JfMjAyMjAzLCBDQl8yMDIyMDQpXG5cblxuYGBgIn0= -->
-<pre class="r"><code>CB_data = rbind(CB_202102, CB_202103, CB_202104, CB_202105, CB_202106,
-                    CB_202107, CB_202108, CB_202109, CB_202110, CB_202111,
-                    CB_202112, CB_202201, CB_202202, CB_202203, CB_202204)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChDQl9EYXRhKVxuXG5gYGAifQ== -->
+<pre class="r"><code>head(CB_Data)
 </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2xhc3NpY19iaWtlXCIgXCJjbGFzc2ljX2Jpa2VcIiBcImNsYXNzaWNfYmlrZVwiIFwiY2xhc3NpY19iaWtlXCIgXCJjbGFzc2ljX2Jpa2VcIlxuWzZdIFwiY2xhc3NpY19iaWtlXCJcbiJ9 -->
+<pre><code>[1] &quot;classic_bike&quot; &quot;classic_bike&quot; &quot;classic_bike&quot; &quot;classic_bike&quot; &quot;classic_bike&quot;
+[6] &quot;classic_bike&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KIyBsaWJyYXJ5KCJkcGx5ciIpICAgICAgIyBMb2FkIGRwbHlyIHBhY2thZ2UKIyBsaWJyYXJ5KCJwbHlyIikgICAgICAgIyBMb2FkIHBseXIgcGFja2FnZQojIGxpYnJhcnkoInJlYWRyIikgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQojIGxpYnJhcnkoInB1cnJyIikgICAgICAjIExvYWQgcHVycnIgcGFja2FnZQpsaWJyYXJ5KCJkYXRhLnRhYmxlIikgIyBMb2FkIGRhdGEudGFibGUgcGFja2FnZSBmb3IgZnJlYWQKYGBgCk5leHQsIHJlYWQgdGhlIC5jc3YgZmlsZXMgdGhhdCBtZWV0IHRoZSBsYXRlc3QgZm9ybWF0IGZvciBDaXRpQmlrZSByaWRlciBkYXRhLgpgYGB7cn0KQ0JfRGF0YSA8LSBmcmVhZCgiQ2l0aUJpa2VfZGF0YS8yMDIxMDItMjAyMjA0LWNpdGliaWtlLXRyaXAtZGF0YS5jc3YiKQpoZWFkKENCX0RhdGEpCmBgYApUaGVuLCBtZXJnZSBhbGwgZGF0YWZyYW1lcyBpbnRvIG9uZSB1bmlmaWVkIGRhdGFmcmFtZS4KYGBge3J9CkNCX2RhdGEgPSByYmluZChDQl8yMDIxMDIsIENCXzIwMjEwMywgQ0JfMjAyMTA0LCBDQl8yMDIxMDUsIENCXzIwMjEwNiwKICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMDcsIENCXzIwMjEwOCwgQ0JfMjAyMTA5LCBDQl8yMDIxMTAsIENCXzIwMjExMSwKICAgICAgICAgICAgICAgICAgICBDQl8yMDIxMTIsIENCXzIwMjIwMSwgQ0JfMjAyMjAyLCBDQl8yMDIyMDMsIENCXzIwMjIwNCkKCgpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KIyBsaWJyYXJ5KCJkcGx5ciIpICAgICAgIyBMb2FkIGRwbHlyIHBhY2thZ2UKIyBsaWJyYXJ5KCJwbHlyIikgICAgICAgIyBMb2FkIHBseXIgcGFja2FnZQojIGxpYnJhcnkoInJlYWRyIikgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQojIGxpYnJhcnkoInB1cnJyIikgICAgICAjIExvYWQgcHVycnIgcGFja2FnZQpsaWJyYXJ5KCJkYXRhLnRhYmxlIikgIyBMb2FkIGRhdGEudGFibGUgcGFja2FnZSBmb3IgZnJlYWQKYGBgCk5leHQsIHJlYWQgdGhlIC5jc3YgZmlsZXMgdGhhdCBtZWV0IHRoZSBsYXRlc3QgZm9ybWF0IGZvciBDaXRpQmlrZSByaWRlciBkYXRhLgpgYGB7cn0KQ0JfRGF0YSA8LSBmcmVhZCgiQ2l0aUJpa2VfZGF0YS8yMDIxMDItMjAyMjA0LWNpdGliaWtlLXRyaXAtZGF0YS5jc3YiKQpgYGAKVGhlbiwgbWFrZSBzdXJlIGFsbCB2YWx1ZXMgZm9yIGRvY2tlZF9iaWtlIGFuZCBjbGFzc2ljX2Jpa2UgYXJlIHRoZSBzYW1lLgpgYGB7cn0KQ0JfRGF0YSA8LSByZXBsYWNlKENCX0RhdGEkcmlkZWFibGVfdHlwZSwgCiAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gImRvY2tlZF9iaWtlIiwKICAgICAgICAgICAgICAgICAgICJjbGFzc2ljX2Jpa2UiKQpDQl9EYXRhIDwtIHJlcGxhY2UoQ0JfRGF0YSRyaWRlYWJsZV90eXBlLCAKICAgICAgICAgICAgICAgICAgIENCX0RhdGEkcmlkZWFibGVfdHlwZSA9PSAiY2xhc3NpY19iaWtlIiwKICAgICAgICAgICAgICAgICAgICJDbGFzc2ljIEJpa2UiKQpDQl9EYXRhIDwtIHJlcGxhY2UoQ0JfRGF0YSRyaWRlYWJsZV90eXBlLCAKICAgICAgICAgICAgICAgICAgIENCX0RhdGEkcmlkZWFibGVfdHlwZSA9PSAiZWxlY3RyaWNfYmlrZSIsCiAgICAgICAgICAgICAgICAgICAiRWxlY3RyaWMgQmlrZSIpCmhlYWQoQ0JfRGF0YSkKYGBgCgo=</div>
 
 
 
