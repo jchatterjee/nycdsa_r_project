@@ -13,8 +13,15 @@ First, load all necessary packages.
 library("data.table")             # Load data.table package for fread
 # install.packages("geosphere")   # Install geosphere package
 library("geosphere")              # Load geosphere package for distance calculation
-install.packages("revgeo")        # Install revgeo package
-library("revgeo")                 # Load revgeo package for finding zip codes
+
+# This part is to install the most updated package for "revgeo" directly from the developer
+# Install the devtools package
+# install.packages('devtools') 
+# Detach the package already installed (if applicable); otherwise installing from github won't work
+# detach("package:revgeo", unload = TRUE) 
+# library(devtools)
+# install_github('mhudecheck/revgeo')
+library("revgeo")
 ```
 Next, read the .csv files that meet the latest format for CitiBike rider data.
 ```{r}
@@ -57,11 +64,21 @@ head(CB_Data)
 ```
 Find the zip codes associated with the coordinate data. This will help with ascertaining neighborhood and borough locations for simplicity.
 ```{r}
-CB_data$start_zip <- revgeo(CB_Data$start_lng, CB_Data$start_lat, 
-                            provider = NULL, API = NULL, output = NULL,
+CB_Data$start_zip <- revgeo(CB_Data$start_lng, CB_Data$start_lat,
+                            provider = NULL, API = NULL, output = "hash",
                             item = "zip")
-CB_data$end_zip <- revgeo(CB_Data$end_lng, CB_Data$end_lat, 
-                            provider = NULL, API = NULL, output = NULL,
+CB_Data$end_zip <- revgeo(CB_Data$end_lng, CB_Data$end_lat,
+                            provider = NULL, API = NULL, output = "hash",
                             item = "zip")
+# start_zip <- revgeo(-73.95772, 40.77863,
+#                             provider = NULL, API = NULL, output = "hash",
+#                             item = "zip")
+# end_zip <- revgeo(-73.95578, 40.77280,
+#                             provider = NULL, API = NULL, output = "hash",
+#                             item = "zip")
+# start_zip
+# end_zip
+
+head(CB_Data)
 ```
 
