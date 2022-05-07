@@ -5,11 +5,14 @@ output: html_notebook
 
 First, load all necessary packages.
 ```{r}
-# library("dplyr")      # Load dplyr package
-# library("plyr")       # Load plyr package
-# library("readr")      # Load readr package
-# library("purrr")      # Load purrr package
-library("data.table") # Load data.table package for fread
+# library("dplyr")                # Load dplyr package
+# library("plyr")                 # Load plyr package
+# library("readr")                # Load readr package
+# library("purrr")                # Load purrr package
+# install.packages("data.table")  # Install data.table package
+library("data.table")             # Load data.table package for fread
+# install.packages("geosphere")   # Install geosphere package
+library("geosphere")              # Load geosphere package for distance calculation
 ```
 Next, read the .csv files that meet the latest format for CitiBike rider data.
 ```{r}
@@ -26,7 +29,7 @@ CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] <- "classic_bike"
 #                    "Electric Bike")
 head(CB_Data)
 ```
-Now, calculate actual duration of ride as well as year and month.
+Now, calculate actual duration of ride (in minutes) as well as year and month.
 ```{r}
 setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
 setDT(CB_Data)[, month := format(as.Date(started_at), "%m") ]
@@ -36,6 +39,17 @@ CB_Data$duration = as.numeric(
                                 CB_Data$started_at, 
                                 units ="mins"
                                 )
+                              )
+head(CB_Data)
+```
+Figure out the distances being traveled. Since calculating actual roadmap distance through Google Maps or Bing require use of APIs that cost money and place limitations on daily computations, that process shall be forgone in favor of "as the crow flies", which will provide a rough estimate of travel distance in order to figure out speed.
+
+Convert meters to miles.
+```{r}
+# https://stackoverflow.com/questions/49532911/calculate-distance-longitude-latitude-of-multiple-in-dataframe-r
+CB_Data$distance <- 0.000621371 * distHaversine(
+                              cbind(CB_Data$start_lng, CB_Data$start_lat), 
+                              cbind(CB_Data$end_lng, CB_Data$end_lat) 
                               )
 head(CB_Data)
 ```
