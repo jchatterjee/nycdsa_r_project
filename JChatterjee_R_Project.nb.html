@@ -1996,70 +1996,29 @@ CB_Data$distance &lt;- 0.000621371 * distHaversine(
                               cbind(CB_Data$end_lng, CB_Data$end_lat) 
                               )
 head(CB_Data)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEudGFibGUiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjEyLCJzdW1tYXJ5IjpbXX0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWkdaZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpQQUFzUUFRczBFbGVKSnpFb3VMTTVQamt6S3pVK2tpeHNETUI3TGY4UWFmSjNzREE0UGpEVzY3MEFNZ21zOS9ud09ZdHU0QTgzbS9PNEhsZVJkZGRnQjVETVZEckdBem9aNWhnZ3F5Qi9nSGUwWWtsMEM1YkdCdUNick9rcXI4dkZTb1RwZ2djMmlJTTVENmgreTZXTEJydU8xaklhNExYQWh4bmMxaUJvanJlaUgwWWcyNDY1aitrK0FnNXY4NDNjQUFkb09EUy9JcUZxOFhNUTR1NFZyRmhRSlBNT2w0QWQ5UTJVd1lEZE4zSUtqVzIrUHl1b3dEUVRWbko3NWJsWXRKMTZ2NWVTVGx3MmlFZlVtdi91L2Q5ZERCSmNLMWZmMWtKNkE5b3FWUDhwNGgrQWs4eGF0UHVzTm9KUHUweTl0UFB6OFFWUGRLK3dFRE00Z2ZXQ09aaE9EWHZiOHp4M2NsakVaTGdXekppY1dsaVRrd1htNXFibEpxRVRGeVdIbW9ack1ZR1JnWlVzUkdOWS9Kd0lnTUZpeDh4ZTZDd0QwSHc1a2dNTXZCUVJKQ0cxMFVCQUVIWWFpODJDb1FXQTNUWjM5cmJscmp3cjRWOW4rOXA2bTl2OHRpZnpucjQ3ZlNDKy9oL0lldmo3eVYwYjhMbzlIU08yZFJmcmxlWG1KdUtpaTM4SUtjQk14VkRQLy8vLytGbG1oaEdyaFNFa3NTOWRLS2dGclFzdzdNR0FGd1NRSVI1QzNLVEVsTlRNcEpqUytwTElCbGVhN2lrc1Npa3RTVStFUlkydWRJelV0QjVuT0NWY1RuWUFqa3BjTXlEMUFIa2p5RUM1ZmxoVVI0UEVvS1lhbE1UWVNsQ05iYy9MeVNESmp0S2FWRmlTV1orWGx3ZmliUXVyemtWRWlHUS9FbGUzNEJTQ1hRbjB5Z0VwTVZMWGdZaTlBRStFdnpRT0dTb3B1Y1VacVhyUXRLTTF4Z2FRamdoYkxaa05nOEVDdFpZVUhQQ2t2RnFYbnBtWG13UUdUTlNVeEtoWG1ORHhpTjRPRFhLeWpLeklNRkNoZFF0Rml2Skw4RUhnUmN5Zms1TUJGSVlmSVBBQnA0MW53b0JnQUEifQ== --&gt;
-
-&lt;div data-pagedtable=&quot;false&quot;&gt;
-  &lt;script data-pagedtable-source type=&quot;application/json&quot;&gt;
-{&quot;columns&quot;:[{&quot;label&quot;:[&quot;rideable_type&quot;],&quot;name&quot;:[1],&quot;type&quot;:[&quot;chr&quot;],&quot;align&quot;:[&quot;left&quot;]},{&quot;label&quot;:[&quot;started_at&quot;],&quot;name&quot;:[2],&quot;type&quot;:[&quot;S3: POSIXct&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;ended_at&quot;],&quot;name&quot;:[3],&quot;type&quot;:[&quot;S3: POSIXct&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;start_lat&quot;],&quot;name&quot;:[4],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;start_lng&quot;],&quot;name&quot;:[5],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;end_lat&quot;],&quot;name&quot;:[6],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;end_lng&quot;],&quot;name&quot;:[7],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;member_casual&quot;],&quot;name&quot;:[8],&quot;type&quot;:[&quot;chr&quot;],&quot;align&quot;:[&quot;left&quot;]},{&quot;label&quot;:[&quot;year&quot;],&quot;name&quot;:[9],&quot;type&quot;:[&quot;chr&quot;],&quot;align&quot;:[&quot;left&quot;]},{&quot;label&quot;:[&quot;month&quot;],&quot;name&quot;:[10],&quot;type&quot;:[&quot;chr&quot;],&quot;align&quot;:[&quot;left&quot;]},{&quot;label&quot;:[&quot;duration&quot;],&quot;name&quot;:[11],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]},{&quot;label&quot;:[&quot;distance&quot;],&quot;name&quot;:[12],&quot;type&quot;:[&quot;dbl&quot;],&quot;align&quot;:[&quot;right&quot;]}],&quot;data&quot;:[{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-26 16:38:54&quot;,&quot;3&quot;:&quot;2021-02-26 16:44:37&quot;,&quot;4&quot;:&quot;40.77863&quot;,&quot;5&quot;:&quot;-73.95772&quot;,&quot;6&quot;:&quot;40.77280&quot;,&quot;7&quot;:&quot;-73.95578&quot;,&quot;8&quot;:&quot;casual&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;5.716667&quot;,&quot;12&quot;:&quot;0.4158570&quot;},{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-17 11:09:11&quot;,&quot;3&quot;:&quot;2021-02-17 11:26:47&quot;,&quot;4&quot;:&quot;40.68098&quot;,&quot;5&quot;:&quot;-73.95005&quot;,&quot;6&quot;:&quot;40.68962&quot;,&quot;7&quot;:&quot;-73.98304&quot;,&quot;8&quot;:&quot;member&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;17.600000&quot;,&quot;12&quot;:&quot;1.8309537&quot;},{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-26 18:33:29&quot;,&quot;3&quot;:&quot;2021-02-26 19:05:41&quot;,&quot;4&quot;:&quot;40.68098&quot;,&quot;5&quot;:&quot;-73.95005&quot;,&quot;6&quot;:&quot;40.68034&quot;,&quot;7&quot;:&quot;-73.95577&quot;,&quot;8&quot;:&quot;casual&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;32.200000&quot;,&quot;12&quot;:&quot;0.3034024&quot;},{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-26 12:48:35&quot;,&quot;3&quot;:&quot;2021-02-26 13:07:24&quot;,&quot;4&quot;:&quot;40.68098&quot;,&quot;5&quot;:&quot;-73.95005&quot;,&quot;6&quot;:&quot;40.68962&quot;,&quot;7&quot;:&quot;-73.98304&quot;,&quot;8&quot;:&quot;member&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;18.816667&quot;,&quot;12&quot;:&quot;1.8309537&quot;},{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-25 17:23:22&quot;,&quot;3&quot;:&quot;2021-02-25 17:28:20&quot;,&quot;4&quot;:&quot;40.74269&quot;,&quot;5&quot;:&quot;-73.98671&quot;,&quot;6&quot;:&quot;40.75038&quot;,&quot;7&quot;:&quot;-73.98339&quot;,&quot;8&quot;:&quot;member&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;4.966667&quot;,&quot;12&quot;:&quot;0.5600304&quot;},{&quot;1&quot;:&quot;classic_bike&quot;,&quot;2&quot;:&quot;2021-02-24 17:22:21&quot;,&quot;3&quot;:&quot;2021-02-24 17:28:01&quot;,&quot;4&quot;:&quot;40.74269&quot;,&quot;5&quot;:&quot;-73.98671&quot;,&quot;6&quot;:&quot;40.75038&quot;,&quot;7&quot;:&quot;-73.98339&quot;,&quot;8&quot;:&quot;member&quot;,&quot;9&quot;:&quot;2021&quot;,&quot;10&quot;:&quot;02&quot;,&quot;11&quot;:&quot;5.666667&quot;,&quot;12&quot;:&quot;0.5600304&quot;}],&quot;options&quot;:{&quot;columns&quot;:{&quot;min&quot;:{},&quot;max&quot;:[10],&quot;total&quot;:[12]},&quot;rows&quot;:{&quot;min&quot;:[10],&quot;max&quot;:[10],&quot;total&quot;:[6]},&quot;pages&quot;:{}}}
-  &lt;/script&gt;
-&lt;/div&gt;
-
-&lt;!-- rnb-frame-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-Find the zip codes associated with the coordinate data. This will help with ascertaining neighborhood and borough locations for simplicity.
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDQl9kYXRhJHN0YXJ0X3ppcCA8LSByZXZnZW8oQ0JfRGF0YSRzdGFydF9sbmcsIENCX0RhdGEkc3RhcnRfbGF0LCBcbiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3ZpZGVyID0gTlVMTCwgQVBJID0gTlVMTCwgb3V0cHV0ID0gTlVMTCxcbiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSBcInppcFwiKVxuIyBDQl9kYXRhJGVuZF96aXAgPC0gcmV2Z2VvKENCX0RhdGEkZW5kX2xuZywgQ0JfRGF0YSRlbmRfbGF0LCBcbiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3ZpZGVyID0gTlVMTCwgQVBJID0gTlVMTCwgb3V0cHV0ID0gTlVMTCxcbiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSBcInppcFwiKVxuc3RhcnRfemlwIDwtIHJldmdlbygtNzMuOTU3NzIsIDQwLjc3ODYzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3ZpZGVyID0gTlVMTCwgQVBJID0gTlVMTCwgb3V0cHV0ID0gXCJoYXNoXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgaXRlbSA9IFwiemlwXCIpXG5gYGAifQ== --&gt;
-
-```r
-# CB_data$start_zip &lt;- revgeo(CB_Data$start_lng, CB_Data$start_lat, 
-#                             provider = NULL, API = NULL, output = NULL,
-#                             item = &quot;zip&quot;)
-# CB_data$end_zip &lt;- revgeo(CB_Data$end_lng, CB_Data$end_lat, 
-#                             provider = NULL, API = NULL, output = NULL,
-#                             item = &quot;zip&quot;)
-start_zip &lt;- revgeo(-73.95772, 40.77863,
-                            provider = NULL, API = NULL, output = &quot;hash&quot;,
-                            item = &quot;zip&quot;)</code></pre>
+<p>```</p>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiR2V0dGluZyBnZW9jb2RlIGRhdGEgZnJvbSBQaG90b246IGh0dHBzOi8vcGhvdG9uLmtvbW9vdC5pby9yZXZlcnNlP2xhbmc9ZW4mbG9uPS03My45NTc3MiZsYXQ9NDAuNzc4NjNcIlxuIn0= -->
-<pre><code>[1] &quot;Getting geocode data from Photon: https://photon.komoot.io/reverse?lang=en&amp;lon=-73.95772&amp;lat=40.77863&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZW5kX3ppcCA8LSByZXZnZW8oLTczLjk1NTc4LCA0MC43NzI4MCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm92aWRlciA9IE5VTEwsIEFQSSA9IE5VTEwsIG91dHB1dCA9IFwiaGFzaFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSBcInppcFwiKVxuYGBgIn0= -->
-<pre class="r"><code>end_zip &lt;- revgeo(-73.95578, 40.77280,
-                            provider = NULL, API = NULL, output = &quot;hash&quot;,
-                            item = &quot;zip&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiR2V0dGluZyBnZW9jb2RlIGRhdGEgZnJvbSBQaG90b246IGh0dHBzOi8vcGhvdG9uLmtvbW9vdC5pby9yZXZlcnNlP2xhbmc9ZW4mbG9uPS03My45NTU3OCZsYXQ9NDAuNzcyOFwiXG4ifQ== -->
-<pre><code>[1] &quot;Getting geocode data from Photon: https://photon.komoot.io/reverse?lang=en&amp;lon=-73.95578&amp;lat=40.7728&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RhcnRfemlwXG5gYGAifQ== -->
-<pre class="r"><code>start_zip</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHppcFxuWzFdIFwiMTAwMjhcIlxuIn0= -->
-<pre><code>$zip
-[1] &quot;10028&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZW5kX3ppcFxuYGBgIn0= -->
-<pre class="r"><code>end_zip</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHppcFxuWzFdIFwiMTAwMjFcIlxuIn0= -->
-<pre><code>$zip
-[1] &quot;10021&quot;</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEudGFibGUiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjEyLCJzdW1tYXJ5IjpbXX0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWkdaZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpQQUFzUUFRczBFbGVKSnpFb3VMTTVQamt6S3pVK2tpeHNETUI3TGY4UWFmSjNzREE0UGpEVzY3MEFNZ21zOS9ud09ZdHU0QTgzbS9PNEhsZVJkZGRnQjVETVZEckdBem9aNWhnZ3F5Qi9nSGUwWWtsMEM1YkdCdUNick9rcXI4dkZTb1RwZ2djMmlJTTVENmgreTZXTEJydU8xaklhNExYQWh4bmMxaUJvanJlaUgwWWcyNDY1aitrK0FnNXY4NDNjQUFkb09EUy9JcUZxOFhNUTR1NFZyRmhRSlBNT2w0QWQ5UTJVd1lEZE4zSUtqVzIrUHl1b3dEUVRWbko3NWJsWXRKMTZ2NWVTVGx3MmlFZlVtdi91L2Q5ZERCSmNLMWZmMWtKNkE5b3FWUDhwNGgrQWs4eGF0UHVzTm9KUHUweTl0UFB6OFFWUGRLK3dFRE00Z2ZXQ09aaE9EWHZiOHp4M2NsakVaTGdXekppY1dsaVRrd1htNXFibEpxRVRGeVdIbW9ack1ZR1JnWlVzUkdOWS9Kd0lnTUZpeDh4ZTZDd0QwSHc1a2dNTXZCUVJKQ0cxMFVCQUVIWWFpODJDb1FXQTNUWjM5cmJscmp3cjRWOW4rOXA2bTl2OHRpZnpucjQ3ZlNDKy9oL0lldmo3eVYwYjhMbzlIU08yZFJmcmxlWG1KdUtpaTM4SUtjQk14VkRQLy8vLytGbG1oaEdyaFNFa3NTOWRLS2dGclFzdzdNR0FGd1NRSVI1QzNLVEVsTlRNcEpqUytwTElCbGVhN2lrc1Npa3RTVStFUlkydWRJelV0QjVuT0NWY1RuWUFqa3BjTXlEMUFIa2p5RUM1ZmxoVVI0UEVvS1lhbE1UWVNsQ05iYy9MeVNESmp0S2FWRmlTV1orWGx3ZmliUXVyemtWRWlHUS9FbGUzNEJTQ1hRbjB5Z0VwTVZMWGdZaTlBRStFdnpRT0dTb3B1Y1VacVhyUXRLTTF4Z2FRamdoYkxaa05nOEVDdFpZVUhQQ2t2RnFYbnBtWG13UUdUTlNVeEtoWG1ORHhpTjRPRFhLeWpLeklNRkNoZFF0Rml2Skw4RUhnUmN5Zms1TUJGSVlmSVBBQnA0MW53b0JnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["rideable_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["started_at"],"name":[2],"type":["S3: POSIXct"],"align":["right"]},{"label":["ended_at"],"name":[3],"type":["S3: POSIXct"],"align":["right"]},{"label":["start_lat"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["start_lng"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["end_lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["end_lng"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["member_casual"],"name":[8],"type":["chr"],"align":["left"]},{"label":["year"],"name":[9],"type":["chr"],"align":["left"]},{"label":["month"],"name":[10],"type":["chr"],"align":["left"]},{"label":["duration"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["distance"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"classic_bike","2":"2021-02-26 16:38:54","3":"2021-02-26 16:44:37","4":"40.77863","5":"-73.95772","6":"40.77280","7":"-73.95578","8":"casual","9":"2021","10":"02","11":"5.716667","12":"0.4158570"},{"1":"classic_bike","2":"2021-02-17 11:09:11","3":"2021-02-17 11:26:47","4":"40.68098","5":"-73.95005","6":"40.68962","7":"-73.98304","8":"member","9":"2021","10":"02","11":"17.600000","12":"1.8309537"},{"1":"classic_bike","2":"2021-02-26 18:33:29","3":"2021-02-26 19:05:41","4":"40.68098","5":"-73.95005","6":"40.68034","7":"-73.95577","8":"casual","9":"2021","10":"02","11":"32.200000","12":"0.3034024"},{"1":"classic_bike","2":"2021-02-26 12:48:35","3":"2021-02-26 13:07:24","4":"40.68098","5":"-73.95005","6":"40.68962","7":"-73.98304","8":"member","9":"2021","10":"02","11":"18.816667","12":"1.8309537"},{"1":"classic_bike","2":"2021-02-25 17:23:22","3":"2021-02-25 17:28:20","4":"40.74269","5":"-73.98671","6":"40.75038","7":"-73.98339","8":"member","9":"2021","10":"02","11":"4.966667","12":"0.5600304"},{"1":"classic_bike","2":"2021-02-24 17:22:21","3":"2021-02-24 17:28:01","4":"40.74269","5":"-73.98671","6":"40.75038","7":"-73.98339","8":"member","9":"2021","10":"02","11":"5.666667","12":"0.5600304"}],"options":{"columns":{"min":{},"max":[10],"total":[12]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Find the zip codes associated with the coordinate data. This will
+help with ascertaining neighborhood and borough locations for
+simplicity.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEudGFibGUiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjExLCJzdW1tYXJ5IjpbXX0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWkdaZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpIQURzUUFRczBFbGVKSnpFb3VMTTVQamt6S3pVK2tpeHNETUI3TGY4UWFmSjNzREE0UGpEVzY3MEFNZ21zOS9ud09ZdHU0QTgzbS9PNEhsZVJkZGRnQjVETVZEckdBem9aNWhnZ3F5Qi9nSGUwWWtsMEM1YkdCdUNick9rcXI4dkZTb1RwZ2djMmlJTTVENmgreTZXTEJydU8xaklhNExYQWh4bmMxaUJvanJlaUgwWWcyNDY1aitrK0FnNXY4NDNjQUFkb09EUy9JcUZxOFhNUTR1NFZyRmhRSlBNT2w0QWQ5UTJVd1lEZE4zSUtqVzIrUHl1b3dEUVRWbko3NWJsWXRKMTZ2NWVTVGx3MmlFZlVtdi91L2Q5ZERCSmNLMWZmMWtKNkE5b3FWUDhwNGgrQWs4eGF0UHVzTm9KUHUweTl0UFB6OFFWUGRLK3dFRE00Z2ZXQ09aaE9EWHZiOHp4M2NsakVaTGdXekppY1dsaVRrd1htNXFibEpxRVRGeVdIbW9ack1ZR1JnWlVzUkdOWS9Kd0lnTUZpeDh4ZTZDd0QwSHc1a2dNTXZCUVJKQ0cxMFVCQUVIWWFpODJDb1FXSTJXYmptTDhzdjE4aEp6VTBHcG5oZGtOREIzTVB6Ly8vOFhXdUtEYWVCS1NTeEoxRXNyQW1wQnp3SXdZd1RBSlFKRWtMY29NeVUxTVNrbk5iNmtzZ0NXZGJtS1N4S0xTbEpUNGhOaGFaZ2pOUzhGbWM4SlZoR2ZneUdRbHc3TEJFQWRTUElRTGx5V0Z4Sng4U2d4elZLWm1naUxXZGJjL0x5U0RKanRLYVZGaVNXWitYbVFqSUxpSy9iOEFwQU0wRjlNb0pLT0ZTMDRHSXZRQlBoTDgwRGhrS0tibkZHYWw2MExpaWN1c0RRRThFTFpiRWhzYm9pVnJMQ2dab1dsdnRTODlNdzhXS0N4NWlRbXBjSzh3Z2VNTm5CdzZ4VVVaZWJCQW9FTEtGcXNWNUpmQXZjeVYzSitEa3dFVWdqOEF3Qk1nWjd3NEFVQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["rideable_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["started_at"],"name":[2],"type":["S3: POSIXct"],"align":["right"]},{"label":["ended_at"],"name":[3],"type":["S3: POSIXct"],"align":["right"]},{"label":["start_lat"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["start_lng"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["end_lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["end_lng"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["member_casual"],"name":[8],"type":["chr"],"align":["left"]},{"label":["year"],"name":[9],"type":["chr"],"align":["left"]},{"label":["month"],"name":[10],"type":["chr"],"align":["left"]},{"label":["duration"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"classic_bike","2":"2021-02-26 16:38:54","3":"2021-02-26 16:44:37","4":"40.77863","5":"-73.95772","6":"40.77280","7":"-73.95578","8":"casual","9":"2021","10":"02","11":"5.716667"},{"1":"classic_bike","2":"2021-02-17 11:09:11","3":"2021-02-17 11:26:47","4":"40.68098","5":"-73.95005","6":"40.68962","7":"-73.98304","8":"member","9":"2021","10":"02","11":"17.600000"},{"1":"classic_bike","2":"2021-02-26 18:33:29","3":"2021-02-26 19:05:41","4":"40.68098","5":"-73.95005","6":"40.68034","7":"-73.95577","8":"casual","9":"2021","10":"02","11":"32.200000"},{"1":"classic_bike","2":"2021-02-26 12:48:35","3":"2021-02-26 13:07:24","4":"40.68098","5":"-73.95005","6":"40.68962","7":"-73.98304","8":"member","9":"2021","10":"02","11":"18.816667"},{"1":"classic_bike","2":"2021-02-25 17:23:22","3":"2021-02-25 17:28:20","4":"40.74269","5":"-73.98671","6":"40.75038","7":"-73.98339","8":"member","9":"2021","10":"02","11":"4.966667"},{"1":"classic_bike","2":"2021-02-24 17:22:21","3":"2021-02-24 17:28:01","4":"40.74269","5":"-73.98671","6":"40.75038","7":"-73.98339","8":"member","9":"2021","10":"02","11":"5.666667"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
