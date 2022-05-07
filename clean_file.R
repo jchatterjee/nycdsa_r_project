@@ -4,6 +4,8 @@
 library("data.table")             # Load data.table package for fread
 # install.packages("geosphere")   # Install geosphere package
 library("geosphere")              # Load geosphere package for distance calculation
+# install.packages("arrow")       # Install the Apache arrow package
+library(arrow)                    # Load arrow package for reading parquet file
 
 # This part is to install the most updated package for "revgeo" directly 
 # from the developer
@@ -17,7 +19,10 @@ library("geosphere")              # Load geosphere package for distance calculat
 library("revgeo")
 
 # Read the .csv files that meet the latest format for CitiBike rider data
-CB_Data <- fread("CitiBike_data/202102-202204-citibike-trip-data.csv")
+CB_Data <- fread("CitiBike_data/202105-202204-citibike-trip-data.csv")
+
+# Read the .parquet file of station id information
+station_data <- read_parquet("CitiBike_data/202009-stations.parquet")
 
 # Delete unnecessary columns
 # CB_data <- CB_data[, -c(1,5,6,7,8)]
