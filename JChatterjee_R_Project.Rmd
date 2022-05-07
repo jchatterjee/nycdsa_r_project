@@ -13,6 +13,8 @@ First, load all necessary packages.
 library("data.table")             # Load data.table package for fread
 # install.packages("geosphere")   # Install geosphere package
 library("geosphere")              # Load geosphere package for distance calculation
+install.packages("revgeo")        # Install revgeo package
+library("revgeo")                 # Load revgeo package for finding zip codes
 ```
 Next, read the .csv files that meet the latest format for CitiBike rider data.
 ```{r}
@@ -52,5 +54,14 @@ CB_Data$distance <- 0.000621371 * distHaversine(
                               cbind(CB_Data$end_lng, CB_Data$end_lat) 
                               )
 head(CB_Data)
+```
+Find the zip codes associated with the coordinate data. This will help with ascertaining neighborhood and borough locations for simplicity.
+```{r}
+CB_data$start_zip <- revgeo(CB_Data$start_lng, CB_Data$start_lat, 
+                            provider = NULL, API = NULL, output = NULL,
+                            item = "zip")
+CB_data$end_zip <- revgeo(CB_Data$end_lng, CB_Data$end_lat, 
+                            provider = NULL, API = NULL, output = NULL,
+                            item = "zip")
 ```
 
