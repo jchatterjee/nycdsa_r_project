@@ -22,7 +22,10 @@ library("revgeo")
 CB_Data <- fread("CitiBike_data/202105-202204-citibike-trip-data.csv")
 
 # Read the .parquet file of station id information
-station_data <- read_parquet("CitiBike_data/202009-stations.parquet")
+# station_data <- read_parquet("CitiBike_data/202009-stations.parquet")
+
+# After data has been cleaned, can now import again from a csv file
+station_data <- fread("CitiBike_data/citibike-station-data.csv")
 
 # Delete unnecessary columns
 # CB_data <- CB_data[, -c(1,5,6,7,8)]
