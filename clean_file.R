@@ -154,85 +154,85 @@ CB_Data <- cbind(CB_Data, CB_dest)
 # CB_Data <- CB_Data[, -c(2, 3)]
 
 # Clean all kinds of null values for new station or missing bikes
-question = "Prospect Park SW & 16 St"
-hood = "South Brooklyn"
-boro = "Brooklyn"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "Warren St & W Broadway "
-hood = "Lower Manhattan"
-boro = "Manhattan"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "49 St & 31 Ave"
-hood = "Astoria"
-boro = "Queens"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "34 St & 38 Ave"
-hood = "Astoria"
-boro = "Queens"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "49 St & 31 Ave"
-hood = "Astoria"
-boro = "Queens"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "Hazen St & 20 Ave"
-hood = "Astoria"
-boro = "Queens"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-question = "41 St & 4 Ave"
-hood = "South Brooklyn"
-boro = "Brooklyn"
-CB_Data$CB_start_hood[
-  CB_Data$start_station_name == question] = hood
-CB_Data$CB_start_boro[
-  CB_Data$start_station_name == question] = boro
-CB_Data$CB_end_hood[
-  CB_Data$end_station_name == question] = hood
-CB_Data$CB_end_boro[
-  CB_Data$end_station_name == question] = boro
-nulls <- which(is.na(CB_Data), arr.ind=TRUE)
-enulls <- which(is.na(ebikes), arr.ind=TRUE)
+# question = "Prospect Park SW & 16 St"
+# hood = "South Brooklyn"
+# boro = "Brooklyn"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "Warren St & W Broadway "
+# hood = "Lower Manhattan"
+# boro = "Manhattan"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "49 St & 31 Ave"
+# hood = "Astoria"
+# boro = "Queens"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "34 St & 38 Ave"
+# hood = "Astoria"
+# boro = "Queens"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "49 St & 31 Ave"
+# hood = "Astoria"
+# boro = "Queens"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "Hazen St & 20 Ave"
+# hood = "Astoria"
+# boro = "Queens"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# question = "41 St & 4 Ave"
+# hood = "South Brooklyn"
+# boro = "Brooklyn"
+# CB_Data$CB_start_hood[
+#   CB_Data$start_station_name == question] = hood
+# CB_Data$CB_start_boro[
+#   CB_Data$start_station_name == question] = boro
+# CB_Data$CB_end_hood[
+#   CB_Data$end_station_name == question] = hood
+# CB_Data$CB_end_boro[
+#   CB_Data$end_station_name == question] = boro
+# nulls <- which(is.na(CB_Data), arr.ind=TRUE)
+# enulls <- which(is.na(ebikes), arr.ind=TRUE)
 
 # CB_Data$CB_start_hood[CB_Data$start_station_name == ""] = "Unknown"
 # CB_Data$CB_end_hood[CB_Data$end_station_name == ""] = "Unknown"
@@ -245,7 +245,17 @@ enulls <- which(is.na(ebikes), arr.ind=TRUE)
 # CB_Data$end_station_name[CB_Data$end_station_name == ""] = "Unknown"
 # nulls <- which(is.na(CB_Data), arr.ind=TRUE)
 
-CB_Data <- CB_Data[, -c(17, 18, 19, 20)]
+# For simplicity sake, omit the entries with NA values
+# Will have a full refined study later with all null values filled in
+CB_simple <- na.omit(CB_Data)
+CB_simple <- CB_Data[, -c(4, 5, 6, 7)]
+
+# Just a  minor tweak to the member vs casual column
+CB_simple$member_casual[CB_simple$member_casual == "member"] = "Member"
+CB_simple$member_casual[CB_simple$member_casual == "casual"] = "Casual"
+
+# Now is a good time to save the simplified filet
+fwrite(CB_simple, file = "CitiBike_data/[abr]202105-202204-citibike-trip-data.csv")
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
 # distance through Google Maps or Bing require use of APIs that cost money 
