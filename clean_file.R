@@ -21,12 +21,14 @@ library("revgeo")
 
 # Read the .csv files that meet the latest format for CitiBike rider data
 CB_Data <- fread("CitiBike_data/202105-202204-citibike-trip-data.csv")
+print("CitiBike trip data import complete!")
 
 # Read the .parquet file of station id information
 # station_data <- read_parquet("CitiBike_data/202009-stations.parquet")
 
 # After data has been cleaned (manually), can now import again from a csv file
 station_data <- fread("CitiBike_data/citibike-station-data.csv")
+print("CitiBike station data import complete!")
 
 # Clean the station dataframe again in order to simplify the neighborhood categories:
 bronx = c("Bronx County")
@@ -62,6 +64,7 @@ wv = c("Greenwich Village", "Meatpacking District", "Washington Square Village",
 station_data$neighborhood[station_data$neighborhood %in% wv] = "West Village"
 rw = c("Fresh Pond Junction", "Ridgewood")
 station_data$neighborhood[station_data$neighborhood %in% rw] = "Ridgewood"
+print("CitiBike station data frame cleaned!")
 
 # Delete unnecessary columns
 CB_Data <- CB_Data[, -c(1, 6, 8)]
@@ -70,6 +73,7 @@ CB_Data <- CB_Data[, -c(1, 6, 8)]
 CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] = "classic_bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "classic_bike"] = "Classic Bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "electric_bike"] = "Electric Bike"
+print("CitiBike trip data frame cleaned!")
 
 # Calculate actual duration of ride (in minutes) as well as year and month
 setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
@@ -81,6 +85,7 @@ CB_Data$duration = as.numeric(
     units ="mins"
   )
 )
+print("CitiBike trip times calculated!")
 
 # Delete unnecessary columns again
 CB_Data <- CB_Data[, -c(2, 3)]
@@ -92,6 +97,7 @@ CB_Data <- CB_Data[, -c(2, 3)]
 # will have to be matched.
 for (x in 1:nrow(CB_Data)) {
   sprintf("Repetition: %d", x)
+  flush.console()
   if (CB_Data$start_station_name[x] %in% station_data$'station name') {
     CB_Data$start_hood[x] = station_data$neighborhood[
       station_data$'station name' == CB_Data$start_station_name[x]]
@@ -100,6 +106,7 @@ for (x in 1:nrow(CB_Data)) {
   } else {
     CB_Data$start_hood[x] = NA
     CB_Data$start_boro[x] = NA
+    flush.console()
   }
   sprintf("Start neighborhood is: %s", CB_Data$start_hood[x])
   sprintf("Start borough is: %s", CB_Data$start_boro[x])
@@ -114,6 +121,7 @@ for (x in 1:nrow(CB_Data)) {
   }
   sprintf("End neighborhood is: %s", CB_Data$end_hood[x])
   sprintf("End borough is: %s", CB_Data$end_boro[x])
+  flush.console()
 }
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
