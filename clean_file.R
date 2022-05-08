@@ -144,14 +144,108 @@ for (x in 1:length(CB_start_station)) {
 }
 
 # Since that took six hours to run this script, time to save these large vectors
-CB_dest <- data.frame(CB_start_hood, CB_start_boro, CB_end_hood, CB_end_boro)
+# CB_dest <- data.frame(CB_start_hood, CB_start_boro, CB_end_hood, CB_end_boro)
 # fwrite(CB_dest, file = "CitiBike_data/202105-202204-citibike-trip-dests.csv")
 
 # Now the columns can be binded
 CB_Data <- cbind(CB_Data, CB_dest)
 
 # Delete unnecessary columns again
-CB_Data <- CB_Data[, -c(2, 3)]
+# CB_Data <- CB_Data[, -c(2, 3)]
+
+# Clean all kinds of null values for new station or missing bikes
+question = "Prospect Park SW & 16 St"
+hood = "South Brooklyn"
+boro = "Brooklyn"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "Warren St & W Broadway "
+hood = "Lower Manhattan"
+boro = "Manhattan"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "49 St & 31 Ave"
+hood = "Astoria"
+boro = "Queens"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "34 St & 38 Ave"
+hood = "Astoria"
+boro = "Queens"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "49 St & 31 Ave"
+hood = "Astoria"
+boro = "Queens"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "Hazen St & 20 Ave"
+hood = "Astoria"
+boro = "Queens"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+question = "41 St & 4 Ave"
+hood = "South Brooklyn"
+boro = "Brooklyn"
+CB_Data$CB_start_hood[
+  CB_Data$start_station_name == question] = hood
+CB_Data$CB_start_boro[
+  CB_Data$start_station_name == question] = boro
+CB_Data$CB_end_hood[
+  CB_Data$end_station_name == question] = hood
+CB_Data$CB_end_boro[
+  CB_Data$end_station_name == question] = boro
+nulls <- which(is.na(CB_Data), arr.ind=TRUE)
+enulls <- which(is.na(ebikes), arr.ind=TRUE)
+
+# CB_Data$CB_start_hood[CB_Data$start_station_name == ""] = "Unknown"
+# CB_Data$CB_end_hood[CB_Data$end_station_name == ""] = "Unknown"
+# CB_Data$start_lat[is.na(CB_Data$start_lat)] = "Unknown"
+# CB_Data$start_lng[is.na(CB_Data$start_lng)] = "Unknown"
+# CB_Data$end_lat[is.na(CB_Data$end_lat)] = "Unknown"
+# CB_Data$end_lng[is.na(CB_Data$end_lng)] = "Unknown"
+# CB_Data$distance[is.na(CB_Data$distance)] = as.numeric(0)
+# CB_Data$start_station_name[CB_Data$start_station_name == ""] = "Unknown"
+# CB_Data$end_station_name[CB_Data$end_station_name == ""] = "Unknown"
+# nulls <- which(is.na(CB_Data), arr.ind=TRUE)
+
+CB_Data <- CB_Data[, -c(17, 18, 19, 20)]
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
 # distance through Google Maps or Bing require use of APIs that cost money 
@@ -167,4 +261,4 @@ CB_Data$distance <- 0.000621371 * distHaversine(
 )
 
 # Delete unnecessary columns again
-CB_Data <- CB_Data[, -c(2, 3, 4, 5)]
+# CB_Data <- CB_Data[, -c(2, 3, 4, 5)]
