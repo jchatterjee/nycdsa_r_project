@@ -70,12 +70,6 @@ CB_Data <- CB_Data[, -c(1, 6, 8)]
 CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] = "classic_bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "classic_bike"] = "Classic Bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "electric_bike"] = "Electric Bike"
-# CB_Data <- replace(CB_Data$rideable_type,
-#                    CB_Data$rideable_type == "classic_bike",
-#                    "Classic Bike")
-# CB_Data <- replace(CB_Data$rideable_type,
-#                    CB_Data$rideable_type == "electric_bike",
-#                    "Electric Bike")
 
 # Calculate actual duration of ride (in minutes) as well as year and month
 setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
@@ -87,6 +81,28 @@ CB_Data$duration = as.numeric(
     units ="mins"
   )
 )
+
+# Delete unnecessary columns again
+CB_Data <- CB_Data[, -c(2, 3)]
+
+# Figure out the beginning and end destination of the neighborhood and borough
+# This will require matching the start and end station names against the data
+# frame containing the station information. Since the station ids in the the
+# ride data frame and the station data frame do no line up, the exact text strings
+# will have to be matched.
+CB_Data$start_hood = station_data$neighborhood[
+  station_data$`station name` == CB_Data$start_station_name
+]
+CB_Data$start_boro = station_data$boro[
+  station_data$`station name` == CB_Data$start_station_name
+]
+CB_Data$end_hood = station_data$neighborhood[
+  station_data$`station name` == CB_Data$end_station_name
+]
+CB_Data$end_boro = station_data$boro[
+  station_data$`station name` == CB_Data$end_station_name
+]
+
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
 # distance through Google Maps or Bing require use of APIs that cost money 
