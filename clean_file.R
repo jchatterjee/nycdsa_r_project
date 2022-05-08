@@ -104,6 +104,9 @@ station_data <- fread("CitiBike_data/citibike-station-data.csv")
 # ride data frame and the station data frame do no line up, the exact text strings
 # will have to be matched.
 
+# WARNING: This process took this user six hours. Consider hosting this script
+# over a virtual machine on a cloud served
+
 # Since for loops are pretty slow in R, the relevant columns in the dataframes
 # shall be vectorized
 CB_start_station <- CB_Data$start_station_name
@@ -140,6 +143,16 @@ for (x in 1:length(CB_start_station)) {
   print(CB_end_boro[x])
 }
 
+# Since that took six hours to run this script, time to save these large vectors
+CB_dest <- data.frame(CB_start_hood, CB_start_boro, CB_end_hood, CB_end_boro)
+# fwrite(CB_dest, file = "CitiBike_data/202105-202204-citibike-trip-dests.csv")
+
+# Now the columns can be binded
+CB_Data <- cbind(CB_Data, CB_dest)
+
+# Delete unnecessary columns again
+CB_Data <- CB_Data[, -c(2, 3)]
+
 # Figure out the distances being traveled. Since calculating actual roadmap 
 # distance through Google Maps or Bing require use of APIs that cost money 
 # and place limitations on daily computations, that process shall be forgone 
@@ -153,3 +166,5 @@ CB_Data$distance <- 0.000621371 * distHaversine(
   cbind(CB_Data$end_lng, CB_Data$end_lat) 
 )
 
+# Delete unnecessary columns again
+CB_Data <- CB_Data[, -c(2, 3, 4, 5)]
