@@ -90,19 +90,26 @@ CB_Data <- CB_Data[, -c(2, 3)]
 # frame containing the station information. Since the station ids in the the
 # ride data frame and the station data frame do no line up, the exact text strings
 # will have to be matched.
-CB_Data$start_hood = station_data$neighborhood[
-  station_data$`station name` == CB_Data$start_station_name
-]
-CB_Data$start_boro = station_data$boro[
-  station_data$`station name` == CB_Data$start_station_name
-]
-CB_Data$end_hood = station_data$neighborhood[
-  station_data$`station name` == CB_Data$end_station_name
-]
-CB_Data$end_boro = station_data$boro[
-  station_data$`station name` == CB_Data$end_station_name
-]
-
+for (x in 1:nrow(CB_Data)) {
+  if (CB_Data$start_station_name[x] %in% station_data$'station name') {
+    CB_Data$start_hood[x] = station_data$neighborhood[
+      station_data$'station name' == CB_Data$start_station_name[x]]
+    CB_Data$start_boro[x] = station_data$boro[
+      station_data$'station name' == CB_Data$start_station_name[x]]
+  } else {
+    CB_Data$start_hood[x] = NA
+    CB_Data$start_boro[x] = NA
+  }
+  if (CB_Data$end_station_name[x] %in% station_data$'station name') {
+    CB_Data$end_hood[x] = station_data$neighborhood[
+      station_data$'station name' == CB_Data$end_station_name[x]]
+    CB_Data$end_boro[x] = station_data$boro[
+      station_data$'station name' == CB_Data$end_station_name[x]]
+  } else {
+    CB_Data$end_hood[x] = NA
+    CB_Data$end_boro[x] = NA
+  }
+}
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
 # distance through Google Maps or Bing require use of APIs that cost money 
