@@ -21,14 +21,14 @@ library("revgeo")
 
 # Read the .csv files that meet the latest format for CitiBike rider data
 CB_Data <- fread("CitiBike_data/202105-202204-citibike-trip-data.csv")
-print("CitiBike trip data import complete!")
+# print("CitiBike trip data import complete!")
 
 # Read the .parquet file of station id information
 # station_data <- read_parquet("CitiBike_data/202009-stations.parquet")
 
 # After data has been cleaned (manually), can now import again from a csv file
 station_data <- fread("CitiBike_data/citibike-station-data.csv")
-print("CitiBike station data import complete!")
+# print("CitiBike station data import complete!")
 
 # Clean the station dataframe again in order to simplify the neighborhood categories:
 bronx = c("Bronx County")
@@ -64,7 +64,7 @@ wv = c("Greenwich Village", "Meatpacking District", "Washington Square Village",
 station_data$neighborhood[station_data$neighborhood %in% wv] = "West Village"
 rw = c("Fresh Pond Junction", "Ridgewood")
 station_data$neighborhood[station_data$neighborhood %in% rw] = "Ridgewood"
-print("CitiBike station data frame cleaned!")
+# print("CitiBike station data frame cleaned!")
 
 # Delete unnecessary columns
 CB_Data <- CB_Data[, -c(1, 6, 8)]
@@ -73,7 +73,7 @@ CB_Data <- CB_Data[, -c(1, 6, 8)]
 CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] = "classic_bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "classic_bike"] = "Classic Bike"
 CB_Data$rideable_type[CB_Data$rideable_type == "electric_bike"] = "Electric Bike"
-print("CitiBike trip data frame cleaned!")
+# print("CitiBike trip data frame cleaned!")
 
 # Calculate actual duration of ride (in minutes) as well as year and month
 setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
@@ -85,43 +85,59 @@ CB_Data$duration = as.numeric(
     units ="mins"
   )
 )
-print("CitiBike trip times calculated!")
+# print("CitiBike trip times calculated!")
 
 # Delete unnecessary columns again
 CB_Data <- CB_Data[, -c(2, 3)]
+
+# Now is a good time to save the files up until this point
+# fwrite(CB_Data, file = "CitiBike_data/202105-202204-citibike-trip-data.csv")
+# fwrite(station_data, file = "CitiBike_data/citibike-station-data.csv")
+
+# Here is a convenient resume point
+CB_Data <- fread("CitiBike_data/202105-202204-citibike-trip-data.csv")
+station_data <- fread("CitiBike_data/citibike-station-data.csv")
 
 # Figure out the beginning and end destination of the neighborhood and borough
 # This will require matching the start and end station names against the data
 # frame containing the station information. Since the station ids in the the
 # ride data frame and the station data frame do no line up, the exact text strings
 # will have to be matched.
-for (x in 1:nrow(CB_Data)) {
-  sprintf("Repetition: %d", x)
-  flush.console()
-  if (CB_Data$start_station_name[x] %in% station_data$'station name') {
-    CB_Data$start_hood[x] = station_data$neighborhood[
-      station_data$'station name' == CB_Data$start_station_name[x]]
-    CB_Data$start_boro[x] = station_data$boro[
-      station_data$'station name' == CB_Data$start_station_name[x]]
+
+# Since for loops are pretty slow in R, the relevant columns in the dataframes
+# shall be vectorized
+CB_start_station <- CB_Data$start_station_name
+CB_end_station <- CB_Data$end_station_name
+station_name <- station_data$'station name'
+station_hood <- station_data$neighborhood
+station_boro <- station_data$boro
+
+# Initialize empty vectors for proposed new columns
+CB_start_hood = c()
+CB_start_boro = c()
+CB_end_hood = c()
+CB_end_boro = c()
+
+for (x in 1:length(CB_start_station)) {
+  print(x)
+  if (CB_start_station[x] %in% station_name) {
+    CB_start_hood[x] = station_hood[station_name == CB_start_station[x]]
+    CB_start_boro[x] = station_boro[station_name == CB_start_station[x]]
   } else {
-    CB_Data$start_hood[x] = NA
-    CB_Data$start_boro[x] = NA
-    flush.console()
+    CB_start_hood[x] = NA
+    CB_start_boro[x] = NA
   }
-  sprintf("Start neighborhood is: %s", CB_Data$start_hood[x])
-  sprintf("Start borough is: %s", CB_Data$start_boro[x])
-  if (CB_Data$end_station_name[x] %in% station_data$'station name') {
-    CB_Data$end_hood[x] = station_data$neighborhood[
-      station_data$'station name' == CB_Data$end_station_name[x]]
-    CB_Data$end_boro[x] = station_data$boro[
-      station_data$'station name' == CB_Data$end_station_name[x]]
+  print(CB_start_hood[x])
+  print(CB_start_boro[x])
+  if (CB_end_station[x] %in% station_name) {
+    CB_end_hood[x] = station_hood[station_name == CB_end_station[x]]
+    CB_end_boro[x] = station_boro[station_name == CB_send_station[x]]
   } else {
-    CB_Data$end_hood[x] = NA
-    CB_Data$end_boro[x] = NA
+    CB_end_hood[x] = NA
+    CB_end_boro[x] = NA
   }
-  sprintf("End neighborhood is: %s", CB_Data$end_hood[x])
-  sprintf("End borough is: %s", CB_Data$end_boro[x])
-  flush.console()
+  print(CB_end_hood[x])
+  print(CB_end_boro[x])
 }
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
