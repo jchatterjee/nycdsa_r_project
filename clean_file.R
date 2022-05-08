@@ -91,6 +91,7 @@ CB_Data <- CB_Data[, -c(2, 3)]
 # ride data frame and the station data frame do no line up, the exact text strings
 # will have to be matched.
 for (x in 1:nrow(CB_Data)) {
+  sprintf("Repetition: %d", x)
   if (CB_Data$start_station_name[x] %in% station_data$'station name') {
     CB_Data$start_hood[x] = station_data$neighborhood[
       station_data$'station name' == CB_Data$start_station_name[x]]
@@ -100,6 +101,8 @@ for (x in 1:nrow(CB_Data)) {
     CB_Data$start_hood[x] = NA
     CB_Data$start_boro[x] = NA
   }
+  sprintf("Start neighborhood is: %s", CB_Data$start_hood[x])
+  sprintf("Start borough is: %s", CB_Data$start_boro[x])
   if (CB_Data$end_station_name[x] %in% station_data$'station name') {
     CB_Data$end_hood[x] = station_data$neighborhood[
       station_data$'station name' == CB_Data$end_station_name[x]]
@@ -109,6 +112,8 @@ for (x in 1:nrow(CB_Data)) {
     CB_Data$end_hood[x] = NA
     CB_Data$end_boro[x] = NA
   }
+  sprintf("End neighborhood is: %s", CB_Data$end_hood[x])
+  sprintf("End borough is: %s", CB_Data$end_boro[x])
 }
 
 # Figure out the distances being traveled. Since calculating actual roadmap 
