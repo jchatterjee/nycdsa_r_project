@@ -131,7 +131,7 @@ for (x in 1:length(CB_start_station)) {
   print(CB_start_boro[x])
   if (CB_end_station[x] %in% station_name) {
     CB_end_hood[x] = station_hood[station_name == CB_end_station[x]]
-    CB_end_boro[x] = station_boro[station_name == CB_send_station[x]]
+    CB_end_boro[x] = station_boro[station_name == CB_end_station[x]]
   } else {
     CB_end_hood[x] = NA
     CB_end_boro[x] = NA
