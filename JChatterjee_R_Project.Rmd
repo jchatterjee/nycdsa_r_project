@@ -27,7 +27,10 @@ library(ggplot2)
 
 # Prepare a color palette. Here with R color brewer:
 library(RColorBrewer)
-myPalette <- brewer.pal(5, "Set2") 
+myPalette <- brewer.pal(5, "Set2")
+
+# install.packages('ggbump')
+library('ggbump')
 ```
 Next, create a pie chart of total Citibike rides (classic vs eBike)
 ```{r}
@@ -37,7 +40,7 @@ tot_rides_electric = as.numeric(table(CB_Data$rideable_type)[2])
 jpeg(filename="Visualizations/classic_vs_electric.jpg",width=1400,height=1200)
 pie(c(tot_rides_classic, tot_rides_electric), 
     labels = c("Classic","Electric"), border="white", 
-    col=c("blue","yellow"),
+    col=c("blue","green"),
     cex=5)
 dev.off()
 ```
@@ -45,11 +48,15 @@ Now, track the usage of classic vs eBikes over the course of the year
 ```{r}
 # https://datavizpyr.com/bump-plot-with-ggbump/
 
-time_series = c("May 2021", "June 2021", "July 2021", "August 2021",
-                "September 2021", "October 2021,", "November 2021",
-                "December 2021", "January 2022", "February 2022",
-                "March 2022", "April 2022")
+# Need this to be numeric for the bump plot to execute properly
+axis_bins = c(1:12)
 
+# These shall be used as the x axis labels
+time_series = c("May 2021", "Jun 2021", "Jul 2021", "Aug 2021", 
+                "Sep 2021", "Oct 2021,", "Nov 2021", "Dec 2021", 
+                "Jan 2022", "Feb 2022", "Mar 2022", "Apr 2022")
+
+# Sloppy, but only, way to properly acquire data for the time frame of the study
 series_classic = c(
 nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month == "5", year)),
 nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month == "6", year)),
@@ -61,10 +68,11 @@ nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month ==
 nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month == "12", year)),
 nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2022" & month == "1", year)),
 nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2022" & month == "2", year)),
-nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month == "3", year)),
-nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2021" & month == "4", year))
+nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2022" & month == "3", year)),
+nrow(subset(CB_Data, rideable_type == "Classic Bike" & year == "2022" & month == "4", year))
 )
 
+# Sloppy, but only, way to properly acquire data for the time frame of the study
 series_electric = c(
 nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month == "5", year)),
 nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month == "6", year)),
@@ -76,22 +84,30 @@ nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month =
 nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month == "12", year)),
 nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2022" & month == "1", year)),
 nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2022" & month == "2", year)),
-nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month == "3", year)),
-nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2021" & month == "4", year))
+nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2022" & month == "3", year)),
+nrow(subset(CB_Data, rideable_type == "Electric Bike" & year == "2022" & month == "4", year))
 )
 
-CB_usage_trend <- tibble(Time = time_series,
+# Creata data frame
+CB_usage_trend <- tibble(Time = axis_bins,
                         Classic = series_classic,
                         Electric = series_electric)
 
+# Then pivot it
 CB_usage_long <- CB_usage_trend %>%
   pivot_longer(-Time, names_to = "Type", values_to="Rides" )
  
+# Create the geometric bump plot and customize it
 CB_usage_long %>%
   ggplot(aes(Time, Rides, color = Type)) +
-  geom_point(size = 5) +
-  geom_bump() 
-ggsave("Visualizations/bump_plot_ggbump.png", width=8, height=6)
+  geom_point(size = 10) +
+  geom_bump() +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = 1:12,
+                     labels = time_series) +
+  scale_color_manual(values = c("blue", "green")) +
+  theme(text = element_text(size = 20))
+ggsave("Visualizations/bump_plot_ggbump.png", width=21, height=9)
 ```
 Now, calculate actual duration of ride (in minutes) as well as year and month.
 ```{r}
