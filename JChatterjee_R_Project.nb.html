@@ -1772,168 +1772,45 @@ vs Other Modes</h1>
 <p>First, load all necessary packages.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcygnZGV2dG9vbHMnKSAjIEluc3RhbGwgdGhlIGRldnRvb2xzIHBhY2thZ2VcblxuYGBgIn0= -->
-<pre class="r"><code>install.packages(&#39;devtools&#39;) # Install the devtools package
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcImRwbHlyXCIpICAgICAgICAgICAgICAgICAgIyBMb2FkIGRwbHlyIHBhY2thZ2VcblxuYGBgIn0= -->
+<pre class="r"><code>library(&quot;dplyr&quot;)                  # Load dplyr package
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWxzbyBpbnN0YWxsaW5nIHRoZSBkZXBlbmRlbmNpZXMg4oCYY3JlZGVudGlhbHPigJksIOKAmHppcOKAmSwg4oCYZ2l0Y3JlZHPigJksIOKAmGluaeKAmSwg4oCYZ2VydOKAmSwg4oCYZ2jigJksIOKAmHdoaXNrZXLigJksIOKAmHhvcGVu4oCZLCDigJhicmV34oCZLCDigJh1c2V0aGlz4oCZLCDigJhwa2didWlsZOKAmSwg4oCYcmNtZGNoZWNr4oCZLCDigJhyb3h5Z2VuMuKAmSwg4oCYcnZlcnNpb25z4oCZLCDigJhzZXNzaW9uaW5mb+KAmVxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL21hY29zeC9jb250cmliLzQuMS9jcmVkZW50aWFsc18xLjMuMi50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDE3MTE4NCBieXRlcyAoMTY3IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMTY3IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vbWFjb3N4L2NvbnRyaWIvNC4xL3ppcF8yLjIuMC50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDIxMjgyMSBieXRlcyAoMjA3IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMjA3IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vbWFjb3N4L2NvbnRyaWIvNC4xL2dpdGNyZWRzXzAuMS4xLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggOTE5ODEgYnl0ZXMgKDg5IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgODkgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEvaW5pXzAuMy4xLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggMTMyMjQgYnl0ZXMgKDEyIEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMTIgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEvZ2VydF8xLjYuMC50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDIxMzYxNjQgYnl0ZXMgKDIuMCBNQilcbj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5kb3dubG9hZGVkIDIuMCBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL21hY29zeC9jb250cmliLzQuMS9naF8xLjMuMC50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDEzNzg2MyBieXRlcyAoMTM0IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMTM0IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vbWFjb3N4L2NvbnRyaWIvNC4xL3doaXNrZXJfMC40LnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggNjU1MDUgYnl0ZXMgKDYzIEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgNjMgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEveG9wZW5fMS4wLjAudGd6J1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi94LWd6aXAnIGxlbmd0aCAyMjQ0NCBieXRlcyAoMjEgS0IpXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuZG93bmxvYWRlZCAyMSBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL21hY29zeC9jb250cmliLzQuMS9icmV3XzEuMC03LnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggNzQzNjEgYnl0ZXMgKDcyIEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgNzIgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEvdXNldGhpc18yLjEuNS50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDc3MTYwNyBieXRlcyAoNzUzIEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgNzUzIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vbWFjb3N4L2NvbnRyaWIvNC4xL3BrZ2J1aWxkXzEuMy4xLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggMTQ1NzA3IGJ5dGVzICgxNDIgS0IpXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuZG93bmxvYWRlZCAxNDIgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEvcmNtZGNoZWNrXzEuNC4wLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggMTY4MzQ0IGJ5dGVzICgxNjQgS0IpXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuZG93bmxvYWRlZCAxNjQgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvY29udHJpYi80LjEvcm94eWdlbjJfNy4xLjIudGd6J1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi94LWd6aXAnIGxlbmd0aCA4NTk2ODkgYnl0ZXMgKDgzOSBLQilcbj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5kb3dubG9hZGVkIDgzOSBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL21hY29zeC9jb250cmliLzQuMS9ydmVyc2lvbnNfMi4xLjEudGd6J1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi94LWd6aXAnIGxlbmd0aCA2NDUyNiBieXRlcyAoNjMgS0IpXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuZG93bmxvYWRlZCA2MyBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL21hY29zeC9jb250cmliLzQuMS9zZXNzaW9uaW5mb18xLjIuMi50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDE4MzkyMCBieXRlcyAoMTc5IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMTc5IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vbWFjb3N4L2NvbnRyaWIvNC4xL2RldnRvb2xzXzIuNC4zLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggNDIwMTgzIGJ5dGVzICg0MTAgS0IpXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuZG93bmxvYWRlZCA0MTAgS0JcbiJ9 -->
-<pre><code>also installing the dependencies ‘credentials’, ‘zip’, ‘gitcreds’, ‘ini’, ‘gert’, ‘gh’, ‘whisker’, ‘xopen’, ‘brew’, ‘usethis’, ‘pkgbuild’, ‘rcmdcheck’, ‘roxygen2’, ‘rversions’, ‘sessioninfo’
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/credentials_1.3.2.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 171184 bytes (167 KB)
-==================================================
-downloaded 167 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/zip_2.2.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 212821 bytes (207 KB)
-==================================================
-downloaded 207 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/gitcreds_0.1.1.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 91981 bytes (89 KB)
-==================================================
-downloaded 89 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/ini_0.3.1.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 13224 bytes (12 KB)
-==================================================
-downloaded 12 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/gert_1.6.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 2136164 bytes (2.0 MB)
-==================================================
-downloaded 2.0 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/gh_1.3.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 137863 bytes (134 KB)
-==================================================
-downloaded 134 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/whisker_0.4.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 65505 bytes (63 KB)
-==================================================
-downloaded 63 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/xopen_1.0.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 22444 bytes (21 KB)
-==================================================
-downloaded 21 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/brew_1.0-7.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 74361 bytes (72 KB)
-==================================================
-downloaded 72 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/usethis_2.1.5.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 771607 bytes (753 KB)
-==================================================
-downloaded 753 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/pkgbuild_1.3.1.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 145707 bytes (142 KB)
-==================================================
-downloaded 142 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/rcmdcheck_1.4.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 168344 bytes (164 KB)
-==================================================
-downloaded 164 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/roxygen2_7.1.2.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 859689 bytes (839 KB)
-==================================================
-downloaded 839 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/rversions_2.1.1.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 64526 bytes (63 KB)
-==================================================
-downloaded 63 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/sessioninfo_1.2.2.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 183920 bytes (179 KB)
-==================================================
-downloaded 179 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/macosx/contrib/4.1/devtools_2.4.3.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 420183 bytes (410 KB)
-==================================================
-downloaded 410 KB</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5UaGUgZG93bmxvYWRlZCBiaW5hcnkgcGFja2FnZXMgYXJlIGluXG5cdC92YXIvZm9sZGVycy9rZy81Y2xubTh2ajFqejJ0bHZtZnhqdnEzXzAwMDAwZ24vVC8vUnRtcG5wYURSZy9kb3dubG9hZGVkX3BhY2thZ2VzXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
 <pre><code>
-The downloaded binary packages are in
-    /var/folders/kg/5clnm8vj1jz2tlvmfxjvq3_00000gn/T//RtmpnpaDRg/downloaded_packages</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGV0YWNoKFwicGFja2FnZTpyZXZnZW9cIiwgdW5sb2FkID0gVFJVRSkgIyBEZXRhY2ggdGhlIHBhY2thZ2UgSSBoYWQgYWxyZWFkeSBpbnN0YWxsZWQ7IG90aGVyd2lzZSBpbnN0YWxsaW5nIGZyb20gZ2l0aHViIHdvbid0IHdvcmtcbmxpYnJhcnkoZGV2dG9vbHMpXG5gYGAifQ== -->
-<pre class="r"><code>detach(&quot;package:revgeo&quot;, unload = TRUE) # Detach the package I had already installed; otherwise installing from github won&#39;t work
-library(devtools)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB1c2V0aGlzXG4ifQ== -->
-<pre><code>Loading required package: usethis</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbF9naXRodWIoJ21odWRlY2hlY2svcmV2Z2VvJylcbmBgYCJ9 -->
-<pre class="r"><code>install_github(&#39;mhudecheck/revgeo&#39;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRG93bmxvYWRpbmcgR2l0SHViIHJlcG8gbWh1ZGVjaGVjay9yZXZnZW9ASEVBRFxuIn0= -->
-<pre><code>Downloading GitHub repo mhudecheck/revgeo@HEAD</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBcbiAgIGNoZWNraW5nIGZvciBmaWxlIOKAmC9wcml2YXRlL3Zhci9mb2xkZXJzL2tnLzVjbG5tOHZqMWp6MnRsdm1meGp2cTNfMDAwMDBnbi9UL1J0bXBucGFEUmcvcmVtb3Rlczg2MzUwYmRlZDYwL21odWRlY2hlY2stcmV2Z2VvLTVhMTdkY2IvREVTQ1JJUFRJT07igJkgLi4uXG4gIFxu4pyUICBjaGVja2luZyBmb3IgZmlsZSDigJgvcHJpdmF0ZS92YXIvZm9sZGVycy9rZy81Y2xubTh2ajFqejJ0bHZtZnhqdnEzXzAwMDAwZ24vVC9SdG1wbnBhRFJnL3JlbW90ZXM4NjM1MGJkZWQ2MC9taHVkZWNoZWNrLXJldmdlby01YTE3ZGNiL0RFU0NSSVBUSU9O4oCZXG5cbiAgXG7ilIAgIHByZXBhcmluZyDigJhyZXZnZW/igJk6XG5cbiAgXG4gICBjaGVja2luZyBERVNDUklQVElPTiBtZXRhLWluZm9ybWF0aW9uIC4uLlxuICBcbuKclCAgY2hlY2tpbmcgREVTQ1JJUFRJT04gbWV0YS1pbmZvcm1hdGlvblxuXG4gIFxu4pSAICBjaGVja2luZyBmb3IgTEYgbGluZS1lbmRpbmdzIGluIHNvdXJjZSBhbmQgbWFrZSBmaWxlcyBhbmQgc2hlbGwgc2NyaXB0c1xuXG4gIFxu4pSAICBjaGVja2luZyBmb3IgZW1wdHkgb3IgdW5uZWVkZWQgZGlyZWN0b3JpZXNcbiAgIE9taXR0ZWQg4oCYTGF6eURhdGHigJkgZnJvbSBERVNDUklQVElPTlxuXG4gIFxu4pSAICBidWlsZGluZyDigJhyZXZnZW9fMC4xMy50YXIuZ3rigJlcblxuICBcbiAgIFxuIn0= -->
-<pre><code>  
-   checking for file ‘/private/var/folders/kg/5clnm8vj1jz2tlvmfxjvq3_00000gn/T/RtmpnpaDRg/remotes86350bded60/mhudecheck-revgeo-5a17dcb/DESCRIPTION’ ...
-  
-✔  checking for file ‘/private/var/folders/kg/5clnm8vj1jz2tlvmfxjvq3_00000gn/T/RtmpnpaDRg/remotes86350bded60/mhudecheck-revgeo-5a17dcb/DESCRIPTION’
+Attaching package: ‘dplyr’
 
-  
-─  preparing ‘revgeo’:
+The following objects are masked from ‘package:stats’:
 
-  
-   checking DESCRIPTION meta-information ...
-  
-✔  checking DESCRIPTION meta-information
+    filter, lag
 
-  
-─  checking for LF line-endings in source and make files and shell scripts
+The following objects are masked from ‘package:base’:
 
-  
-─  checking for empty or unneeded directories
-   Omitted ‘LazyData’ from DESCRIPTION
-
-  
-─  building ‘revgeo_0.13.tar.gz’
-
-  
-   </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiKiBpbnN0YWxsaW5nICpzb3VyY2UqIHBhY2thZ2Ug4oCYcmV2Z2Vv4oCZIC4uLlxuKiogdXNpbmcgc3RhZ2VkIGluc3RhbGxhdGlvblxuKiogUlxuKiogYnl0ZS1jb21waWxlIGFuZCBwcmVwYXJlIHBhY2thZ2UgZm9yIGxhenkgbG9hZGluZ1xuKiogaGVscFxuKioqIGluc3RhbGxpbmcgaGVscCBpbmRpY2VzXG4qKiBidWlsZGluZyBwYWNrYWdlIGluZGljZXNcbioqIHRlc3RpbmcgaWYgaW5zdGFsbGVkIHBhY2thZ2UgY2FuIGJlIGxvYWRlZCBmcm9tIHRlbXBvcmFyeSBsb2NhdGlvblxuKiogdGVzdGluZyBpZiBpbnN0YWxsZWQgcGFja2FnZSBjYW4gYmUgbG9hZGVkIGZyb20gZmluYWwgbG9jYXRpb25cbioqIHRlc3RpbmcgaWYgaW5zdGFsbGVkIHBhY2thZ2Uga2VlcHMgYSByZWNvcmQgb2YgdGVtcG9yYXJ5IGluc3RhbGxhdGlvbiBwYXRoXG4qIERPTkUgKHJldmdlbylcbiJ9 -->
-<pre><code>* installing *source* package ‘revgeo’ ...
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (revgeo)</code></pre>
+    intersect, setdiff, setequal, union</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Next, read the .csv files that meet the latest format for CitiBike
-rider data.</p>
+<p>Next, create a pie chart of total Citibike rides (classic vs
+eBike)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0JfRGF0YSA8LSBmcmVhZChcIkNpdGlCaWtlX2RhdGEvMjAyMTAyLTIwMjIwNC1jaXRpYmlrZS10cmlwLWRhdGEuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>CB_Data &lt;- fread(&quot;CitiBike_data/202102-202204-citibike-trip-data.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuanBlZyhmaWxlbmFtZT1cIlZpc3VhbGl6YXRpb25zL2NsYXNzaWNfdnNfZWxlY3RyaWMuanBnXCIsd2lkdGg9MTQwMCxoZWlnaHQ9MTIwMClcbnBpZShjKHRvdF9yaWRlc19jbGFzc2ljLCB0b3RfcmlkZXNfZWxlY3RyaWMpLCBcbiAgICBsYWJlbHMgPSBjKFwiQ2xhc3NpY1wiLFwiRWxlY3RyaWNcIiksIGJvcmRlcj1cIndoaXRlXCIsIFxuICAgIGNvbD1jKFwiYmx1ZVwiLFwieWVsbG93XCIpLFxuICAgIGNleD01KVxuZGV2Lm9mZigpXG5cbmBgYCJ9 -->
+<pre class="r"><code>jpeg(filename=&quot;Visualizations/classic_vs_electric.jpg&quot;,width=1400,height=1200)
+pie(c(tot_rides_classic, tot_rides_electric), 
+    labels = c(&quot;Classic&quot;,&quot;Electric&quot;), border=&quot;white&quot;, 
+    col=c(&quot;blue&quot;,&quot;yellow&quot;),
+    cex=5)
+dev.off()
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoifC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfFxufD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09fFxuIn0= -->
-<pre><code>|--------------------------------------------------|
-|==================================================|</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoibnVsbCBkZXZpY2UgXG4gICAgICAgICAgMSBcbiJ9 -->
+<pre><code>null device 
+          1 </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Then, make sure all values for docked_bike and classic_bike are the
-same.</p>
+<p>Now, track the usage of classic vs eBikes over the course of the
+year</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0JfRGF0YSRyaWRlYWJsZV90eXBlW0NCX0RhdGEkcmlkZWFibGVfdHlwZSA9PSBcImRvY2tlZF9iaWtlXCJdIDwtIFwiY2xhc3NpY19iaWtlXCJcbiMgQ0JfRGF0YSA8LSByZXBsYWNlKENCX0RhdGEkcmlkZWFibGVfdHlwZSwgXG4jICAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gXCJjbGFzc2ljX2Jpa2VcIixcbiMgICAgICAgICAgICAgICAgICAgIFwiQ2xhc3NpYyBCaWtlXCIpXG4jIENCX0RhdGEgPC0gcmVwbGFjZShDQl9EYXRhJHJpZGVhYmxlX3R5cGUsIFxuIyAgICAgICAgICAgICAgICAgICAgQ0JfRGF0YSRyaWRlYWJsZV90eXBlID09IFwiZWxlY3RyaWNfYmlrZVwiLFxuIyAgICAgICAgICAgICAgICAgICAgXCJFbGVjdHJpYyBCaWtlXCIpXG5oZWFkKENCX0RhdGEpXG5gYGAifQ== -->
@@ -2023,7 +1900,7 @@ simplicity.</p>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KIyBsaWJyYXJ5KCJkcGx5ciIpICAgICAgICAgICAgICAgICMgTG9hZCBkcGx5ciBwYWNrYWdlCiMgbGlicmFyeSgicGx5ciIpICAgICAgICAgICAgICAgICAjIExvYWQgcGx5ciBwYWNrYWdlCiMgbGlicmFyeSgicmVhZHIiKSAgICAgICAgICAgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQojIGxpYnJhcnkoInB1cnJyIikgICAgICAgICAgICAgICAgIyBMb2FkIHB1cnJyIHBhY2thZ2UKIyBpbnN0YWxsLnBhY2thZ2VzKCJkYXRhLnRhYmxlIikgICMgSW5zdGFsbCBkYXRhLnRhYmxlIHBhY2thZ2UKbGlicmFyeSgiZGF0YS50YWJsZSIpICAgICAgICAgICAgICMgTG9hZCBkYXRhLnRhYmxlIHBhY2thZ2UgZm9yIGZyZWFkCiMgaW5zdGFsbC5wYWNrYWdlcygiZ2Vvc3BoZXJlIikgICAjIEluc3RhbGwgZ2Vvc3BoZXJlIHBhY2thZ2UKbGlicmFyeSgiZ2Vvc3BoZXJlIikgICAgICAgICAgICAgICMgTG9hZCBnZW9zcGhlcmUgcGFja2FnZSBmb3IgZGlzdGFuY2UgY2FsY3VsYXRpb24KCiMgVGhpcyBwYXJ0IGlzIHRvIGluc3RhbGwgdGhlIG1vc3QgdXBkYXRlZCBwYWNrYWdlIGZvciAicmV2Z2VvIiBkaXJlY3RseSBmcm9tIHRoZSBkZXZlbG9wZXIKIyBJbnN0YWxsIHRoZSBkZXZ0b29scyBwYWNrYWdlCiMgaW5zdGFsbC5wYWNrYWdlcygnZGV2dG9vbHMnKSAKIyBEZXRhY2ggdGhlIHBhY2thZ2UgYWxyZWFkeSBpbnN0YWxsZWQgKGlmIGFwcGxpY2FibGUpOyBvdGhlcndpc2UgaW5zdGFsbGluZyBmcm9tIGdpdGh1YiB3b24ndCB3b3JrCiMgZGV0YWNoKCJwYWNrYWdlOnJldmdlbyIsIHVubG9hZCA9IFRSVUUpIAojIGxpYnJhcnkoZGV2dG9vbHMpCiMgaW5zdGFsbF9naXRodWIoJ21odWRlY2hlY2svcmV2Z2VvJykKbGlicmFyeSgicmV2Z2VvIikKYGBgCk5leHQsIHJlYWQgdGhlIC5jc3YgZmlsZXMgdGhhdCBtZWV0IHRoZSBsYXRlc3QgZm9ybWF0IGZvciBDaXRpQmlrZSByaWRlciBkYXRhLgpgYGB7cn0KQ0JfRGF0YSA8LSBmcmVhZCgiQ2l0aUJpa2VfZGF0YS8yMDIxMDItMjAyMjA0LWNpdGliaWtlLXRyaXAtZGF0YS5jc3YiKQpgYGAKVGhlbiwgbWFrZSBzdXJlIGFsbCB2YWx1ZXMgZm9yIGRvY2tlZF9iaWtlIGFuZCBjbGFzc2ljX2Jpa2UgYXJlIHRoZSBzYW1lLgpgYGB7cn0KQ0JfRGF0YSRyaWRlYWJsZV90eXBlW0NCX0RhdGEkcmlkZWFibGVfdHlwZSA9PSAiZG9ja2VkX2Jpa2UiXSA8LSAiY2xhc3NpY19iaWtlIgojIENCX0RhdGEgPC0gcmVwbGFjZShDQl9EYXRhJHJpZGVhYmxlX3R5cGUsIAojICAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gImNsYXNzaWNfYmlrZSIsCiMgICAgICAgICAgICAgICAgICAgICJDbGFzc2ljIEJpa2UiKQojIENCX0RhdGEgPC0gcmVwbGFjZShDQl9EYXRhJHJpZGVhYmxlX3R5cGUsIAojICAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gImVsZWN0cmljX2Jpa2UiLAojICAgICAgICAgICAgICAgICAgICAiRWxlY3RyaWMgQmlrZSIpCmhlYWQoQ0JfRGF0YSkKYGBgCk5vdywgY2FsY3VsYXRlIGFjdHVhbCBkdXJhdGlvbiBvZiByaWRlIChpbiBtaW51dGVzKSBhcyB3ZWxsIGFzIHllYXIgYW5kIG1vbnRoLgpgYGB7cn0Kc2V0RFQoQ0JfRGF0YSlbLCB5ZWFyIDo9IGZvcm1hdChhcy5EYXRlKHN0YXJ0ZWRfYXQpLCAiJVkiKSBdCnNldERUKENCX0RhdGEpWywgbW9udGggOj0gZm9ybWF0KGFzLkRhdGUoc3RhcnRlZF9hdCksICIlbSIpIF0KQ0JfRGF0YSRkdXJhdGlvbiA9IGFzLm51bWVyaWMoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpZmZ0aW1lKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENCX0RhdGEkZW5kZWRfYXQsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENCX0RhdGEkc3RhcnRlZF9hdCwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5pdHMgPSJtaW5zIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKQpoZWFkKENCX0RhdGEpCmBgYApGaWd1cmUgb3V0IHRoZSBkaXN0YW5jZXMgYmVpbmcgdHJhdmVsZWQuIFNpbmNlIGNhbGN1bGF0aW5nIGFjdHVhbCByb2FkbWFwIGRpc3RhbmNlIHRocm91Z2ggR29vZ2xlIE1hcHMgb3IgQmluZyByZXF1aXJlIHVzZSBvZiBBUElzIHRoYXQgY29zdCBtb25leSBhbmQgcGxhY2UgbGltaXRhdGlvbnMgb24gZGFpbHkgY29tcHV0YXRpb25zLCB0aGF0IHByb2Nlc3Mgc2hhbGwgYmUgZm9yZ29uZSBpbiBmYXZvciBvZiAiYXMgdGhlIGNyb3cgZmxpZXMiLCB3aGljaCB3aWxsIHByb3ZpZGUgYSByb3VnaCBlc3RpbWF0ZSBvZiB0cmF2ZWwgZGlzdGFuY2UgaW4gb3JkZXIgdG8gZmlndXJlIG91dCBzcGVlZC4KCkNvbnZlcnQgbWV0ZXJzIHRvIG1pbGVzLgpgYGB7cn0KIyBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy80OTUzMjkxMS9jYWxjdWxhdGUtZGlzdGFuY2UtbG9uZ2l0dWRlLWxhdGl0dWRlLW9mLW11bHRpcGxlLWluLWRhdGFmcmFtZS1yCkNCX0RhdGEkZGlzdGFuY2UgPC0gMC4wMDA2MjEzNzEgKiBkaXN0SGF2ZXJzaW5lKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYmluZChDQl9EYXRhJHN0YXJ0X2xuZywgQ0JfRGF0YSRzdGFydF9sYXQpLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2JpbmQoQ0JfRGF0YSRlbmRfbG5nLCBDQl9EYXRhJGVuZF9sYXQpIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICApCmhlYWQoQ0JfRGF0YSkKYGBgCkZpbmQgdGhlIHppcCBjb2RlcyBhc3NvY2lhdGVkIHdpdGggdGhlIGNvb3JkaW5hdGUgZGF0YS4gVGhpcyB3aWxsIGhlbHAgd2l0aCBhc2NlcnRhaW5pbmcgbmVpZ2hib3Job29kIGFuZCBib3JvdWdoIGxvY2F0aW9ucyBmb3Igc2ltcGxpY2l0eS4KYGBge3J9CkNCX0RhdGEkc3RhcnRfemlwIDwtIHJldmdlbyhDQl9EYXRhJHN0YXJ0X2xuZywgQ0JfRGF0YSRzdGFydF9sYXQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm92aWRlciA9IE5VTEwsIEFQSSA9IE5VTEwsIG91dHB1dCA9ICJoYXNoIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSAiemlwIikKQ0JfRGF0YSRlbmRfemlwIDwtIHJldmdlbyhDQl9EYXRhJGVuZF9sbmcsIENCX0RhdGEkZW5kX2xhdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3ZpZGVyID0gTlVMTCwgQVBJID0gTlVMTCwgb3V0cHV0ID0gImhhc2giLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgaXRlbSA9ICJ6aXAiKQojIHN0YXJ0X3ppcCA8LSByZXZnZW8oLTczLjk1NzcyLCA0MC43Nzg2MywKIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJvdmlkZXIgPSBOVUxMLCBBUEkgPSBOVUxMLCBvdXRwdXQgPSAiaGFzaCIsCiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSAiemlwIikKIyBlbmRfemlwIDwtIHJldmdlbygtNzMuOTU1NzgsIDQwLjc3MjgwLAojICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm92aWRlciA9IE5VTEwsIEFQSSA9IE5VTEwsIG91dHB1dCA9ICJoYXNoIiwKIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaXRlbSA9ICJ6aXAiKQojIHN0YXJ0X3ppcAojIGVuZF96aXAKCmhlYWQoQ0JfRGF0YSkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMgb2YgQ2l0aWJpa2UgUGVyZm9ybWFuY2Ugb2YgZUJpa2VzIHZzIE90aGVyIE1vZGVzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpGaXJzdCwgbG9hZCBhbGwgbmVjZXNzYXJ5IHBhY2thZ2VzLgpgYGB7cn0KbGlicmFyeSgiZHBseXIiKSAgICAgICAgICAgICAgICAgICMgTG9hZCBkcGx5ciBwYWNrYWdlCiMgbGlicmFyeSgicGx5ciIpICAgICAgICAgICAgICAgICAjIExvYWQgcGx5ciBwYWNrYWdlCiMgbGlicmFyeSgicmVhZHIiKSAgICAgICAgICAgICAgICAjIExvYWQgcmVhZHIgcGFja2FnZQojIGxpYnJhcnkoInB1cnJyIikgICAgICAgICAgICAgICAgIyBMb2FkIHB1cnJyIHBhY2thZ2UKIyBpbnN0YWxsLnBhY2thZ2VzKCJkYXRhLnRhYmxlIikgICMgSW5zdGFsbCBkYXRhLnRhYmxlIHBhY2thZ2UKIyBsaWJyYXJ5KCJkYXRhLnRhYmxlIikgICAgICAgICAgICMgTG9hZCBkYXRhLnRhYmxlIHBhY2thZ2UgZm9yIGZyZWFkCiMgaW5zdGFsbC5wYWNrYWdlcygiZ2Vvc3BoZXJlIikgICAjIEluc3RhbGwgZ2Vvc3BoZXJlIHBhY2thZ2UKI2xpYnJhcnkoImdlb3NwaGVyZSIpICAgICAgICAgICAgICMgTG9hZCBnZW9zcGhlcmUgcGFja2FnZSBmb3IgZGlzdGFuY2UgY2FsY3VsYXRpb24KCiMgVGhpcyBwYXJ0IGlzIHRvIGluc3RhbGwgdGhlIG1vc3QgdXBkYXRlZCBwYWNrYWdlIGZvciAicmV2Z2VvIiBkaXJlY3RseSBmcm9tIHRoZSBkZXZlbG9wZXIKIyBJbnN0YWxsIHRoZSBkZXZ0b29scyBwYWNrYWdlCiMgaW5zdGFsbC5wYWNrYWdlcygnZGV2dG9vbHMnKSAKIyBEZXRhY2ggdGhlIHBhY2thZ2UgYWxyZWFkeSBpbnN0YWxsZWQgKGlmIGFwcGxpY2FibGUpOyBvdGhlcndpc2UgaW5zdGFsbGluZyBmcm9tIGdpdGh1YiB3b24ndCB3b3JrCiMgZGV0YWNoKCJwYWNrYWdlOnJldmdlbyIsIHVubG9hZCA9IFRSVUUpIAojIGxpYnJhcnkoZGV2dG9vbHMpCiMgaW5zdGFsbF9naXRodWIoJ21odWRlY2hlY2svcmV2Z2VvJykKIyBsaWJyYXJ5KCJyZXZnZW8iKQpsaWJyYXJ5KGdncGxvdDIpCgojIFByZXBhcmUgYSBjb2xvciBwYWxldHRlLiBIZXJlIHdpdGggUiBjb2xvciBicmV3ZXI6CmxpYnJhcnkoUkNvbG9yQnJld2VyKQpteVBhbGV0dGUgPC0gYnJld2VyLnBhbCg1LCAiU2V0MiIpIApgYGAKTmV4dCwgY3JlYXRlIGEgcGllIGNoYXJ0IG9mIHRvdGFsIENpdGliaWtlIHJpZGVzIChjbGFzc2ljIHZzIGVCaWtlKQpgYGB7cn0KdG90X3JpZGVzX2NsYXNzaWMgPSBhcy5udW1lcmljKHRhYmxlKENCX0RhdGEkcmlkZWFibGVfdHlwZSlbMV0pCnRvdF9yaWRlc19lbGVjdHJpYyA9IGFzLm51bWVyaWModGFibGUoQ0JfRGF0YSRyaWRlYWJsZV90eXBlKVsyXSkKCmpwZWcoZmlsZW5hbWU9IlZpc3VhbGl6YXRpb25zL2NsYXNzaWNfdnNfZWxlY3RyaWMuanBnIix3aWR0aD0xNDAwLGhlaWdodD0xMjAwKQpwaWUoYyh0b3RfcmlkZXNfY2xhc3NpYywgdG90X3JpZGVzX2VsZWN0cmljKSwgCiAgICBsYWJlbHMgPSBjKCJDbGFzc2ljIiwiRWxlY3RyaWMiKSwgYm9yZGVyPSJ3aGl0ZSIsIAogICAgY29sPWMoImJsdWUiLCJ5ZWxsb3ciKSwKICAgIGNleD01KQpkZXYub2ZmKCkKYGBgCk5vdywgdHJhY2sgdGhlIHVzYWdlIG9mIGNsYXNzaWMgdnMgZUJpa2VzIG92ZXIgdGhlIGNvdXJzZSBvZiB0aGUgeWVhcgpgYGB7cn0KQ0JfRGF0YSRyaWRlYWJsZV90eXBlW0NCX0RhdGEkcmlkZWFibGVfdHlwZSA9PSAiZG9ja2VkX2Jpa2UiXSA8LSAiY2xhc3NpY19iaWtlIgojIENCX0RhdGEgPC0gcmVwbGFjZShDQl9EYXRhJHJpZGVhYmxlX3R5cGUsIAojICAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gImNsYXNzaWNfYmlrZSIsCiMgICAgICAgICAgICAgICAgICAgICJDbGFzc2ljIEJpa2UiKQojIENCX0RhdGEgPC0gcmVwbGFjZShDQl9EYXRhJHJpZGVhYmxlX3R5cGUsIAojICAgICAgICAgICAgICAgICAgICBDQl9EYXRhJHJpZGVhYmxlX3R5cGUgPT0gImVsZWN0cmljX2Jpa2UiLAojICAgICAgICAgICAgICAgICAgICAiRWxlY3RyaWMgQmlrZSIpCmhlYWQoQ0JfRGF0YSkKYGBgCk5vdywgY2FsY3VsYXRlIGFjdHVhbCBkdXJhdGlvbiBvZiByaWRlIChpbiBtaW51dGVzKSBhcyB3ZWxsIGFzIHllYXIgYW5kIG1vbnRoLgpgYGB7cn0Kc2V0RFQoQ0JfRGF0YSlbLCB5ZWFyIDo9IGZvcm1hdChhcy5EYXRlKHN0YXJ0ZWRfYXQpLCAiJVkiKSBdCnNldERUKENCX0RhdGEpWywgbW9udGggOj0gZm9ybWF0KGFzLkRhdGUoc3RhcnRlZF9hdCksICIlbSIpIF0KQ0JfRGF0YSRkdXJhdGlvbiA9IGFzLm51bWVyaWMoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpZmZ0aW1lKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENCX0RhdGEkZW5kZWRfYXQsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENCX0RhdGEkc3RhcnRlZF9hdCwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5pdHMgPSJtaW5zIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKQpoZWFkKENCX0RhdGEpCmBgYApGaWd1cmUgb3V0IHRoZSBkaXN0YW5jZXMgYmVpbmcgdHJhdmVsZWQuIFNpbmNlIGNhbGN1bGF0aW5nIGFjdHVhbCByb2FkbWFwIGRpc3RhbmNlIHRocm91Z2ggR29vZ2xlIE1hcHMgb3IgQmluZyByZXF1aXJlIHVzZSBvZiBBUElzIHRoYXQgY29zdCBtb25leSBhbmQgcGxhY2UgbGltaXRhdGlvbnMgb24gZGFpbHkgY29tcHV0YXRpb25zLCB0aGF0IHByb2Nlc3Mgc2hhbGwgYmUgZm9yZ29uZSBpbiBmYXZvciBvZiAiYXMgdGhlIGNyb3cgZmxpZXMiLCB3aGljaCB3aWxsIHByb3ZpZGUgYSByb3VnaCBlc3RpbWF0ZSBvZiB0cmF2ZWwgZGlzdGFuY2UgaW4gb3JkZXIgdG8gZmlndXJlIG91dCBzcGVlZC4KCkNvbnZlcnQgbWV0ZXJzIHRvIG1pbGVzLgpgYGB7cn0KIyBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy80OTUzMjkxMS9jYWxjdWxhdGUtZGlzdGFuY2UtbG9uZ2l0dWRlLWxhdGl0dWRlLW9mLW11bHRpcGxlLWluLWRhdGFmcmFtZS1yCkNCX0RhdGEkZGlzdGFuY2UgPC0gMC4wMDA2MjEzNzEgKiBkaXN0SGF2ZXJzaW5lKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYmluZChDQl9EYXRhJHN0YXJ0X2xuZywgQ0JfRGF0YSRzdGFydF9sYXQpLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2JpbmQoQ0JfRGF0YSRlbmRfbG5nLCBDQl9EYXRhJGVuZF9sYXQpIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICApCmhlYWQoQ0JfRGF0YSkKYGBgCkZpbmQgdGhlIHppcCBjb2RlcyBhc3NvY2lhdGVkIHdpdGggdGhlIGNvb3JkaW5hdGUgZGF0YS4gVGhpcyB3aWxsIGhlbHAgd2l0aCBhc2NlcnRhaW5pbmcgbmVpZ2hib3Job29kIGFuZCBib3JvdWdoIGxvY2F0aW9ucyBmb3Igc2ltcGxpY2l0eS4KYGBge3J9CkNCX0RhdGEkc3RhcnRfemlwIDwtIHJldmdlbyhDQl9EYXRhJHN0YXJ0X2xuZywgQ0JfRGF0YSRzdGFydF9sYXQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm92aWRlciA9IE5VTEwsIEFQSSA9IE5VTEwsIG91dHB1dCA9ICJoYXNoIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSAiemlwIikKQ0JfRGF0YSRlbmRfemlwIDwtIHJldmdlbyhDQl9EYXRhJGVuZF9sbmcsIENCX0RhdGEkZW5kX2xhdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3ZpZGVyID0gTlVMTCwgQVBJID0gTlVMTCwgb3V0cHV0ID0gImhhc2giLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgaXRlbSA9ICJ6aXAiKQojIHN0YXJ0X3ppcCA8LSByZXZnZW8oLTczLjk1NzcyLCA0MC43Nzg2MywKIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJvdmlkZXIgPSBOVUxMLCBBUEkgPSBOVUxMLCBvdXRwdXQgPSAiaGFzaCIsCiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0gPSAiemlwIikKIyBlbmRfemlwIDwtIHJldmdlbygtNzMuOTU1NzgsIDQwLjc3MjgwLAojICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm92aWRlciA9IE5VTEwsIEFQSSA9IE5VTEwsIG91dHB1dCA9ICJoYXNoIiwKIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaXRlbSA9ICJ6aXAiKQojIHN0YXJ0X3ppcAojIGVuZF96aXAKCmhlYWQoQ0JfRGF0YSkKYGBgCgo=</div>
 
 
 

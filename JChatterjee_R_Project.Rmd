@@ -5,14 +5,14 @@ output: html_notebook
 
 First, load all necessary packages.
 ```{r}
-# library("dplyr")                # Load dplyr package
+library("dplyr")                  # Load dplyr package
 # library("plyr")                 # Load plyr package
 # library("readr")                # Load readr package
 # library("purrr")                # Load purrr package
 # install.packages("data.table")  # Install data.table package
-library("data.table")             # Load data.table package for fread
+# library("data.table")           # Load data.table package for fread
 # install.packages("geosphere")   # Install geosphere package
-library("geosphere")              # Load geosphere package for distance calculation
+#library("geosphere")             # Load geosphere package for distance calculation
 
 # This part is to install the most updated package for "revgeo" directly from the developer
 # Install the devtools package
@@ -21,13 +21,26 @@ library("geosphere")              # Load geosphere package for distance calculat
 # detach("package:revgeo", unload = TRUE) 
 # library(devtools)
 # install_github('mhudecheck/revgeo')
-library("revgeo")
+# library("revgeo")
+library(ggplot2)
+
+# Prepare a color palette. Here with R color brewer:
+library(RColorBrewer)
+myPalette <- brewer.pal(5, "Set2") 
 ```
-Next, read the .csv files that meet the latest format for CitiBike rider data.
+Next, create a pie chart of total Citibike rides (classic vs eBike)
 ```{r}
-CB_Data <- fread("CitiBike_data/202102-202204-citibike-trip-data.csv")
+tot_rides_classic = as.numeric(table(CB_Data$rideable_type)[1])
+tot_rides_electric = as.numeric(table(CB_Data$rideable_type)[2])
+
+jpeg(filename="Visualizations/classic_vs_electric.jpg",width=1400,height=1200)
+pie(c(tot_rides_classic, tot_rides_electric), 
+    labels = c("Classic","Electric"), border="white", 
+    col=c("blue","yellow"),
+    cex=5)
+dev.off()
 ```
-Then, make sure all values for docked_bike and classic_bike are the same.
+Now, track the usage of classic vs eBikes over the course of the year
 ```{r}
 CB_Data$rideable_type[CB_Data$rideable_type == "docked_bike"] <- "classic_bike"
 # CB_Data <- replace(CB_Data$rideable_type, 
