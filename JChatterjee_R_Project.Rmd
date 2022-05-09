@@ -11,7 +11,7 @@ library("dplyr")                  # Load dplyr package
 # library("readr")                # Load readr package
 # library("purrr")                # Load purrr package
 # install.packages("data.table")  # Install data.table package
-# library("data.table")           # Load data.table package for fread
+library("data.table")             # Load data.table package for fread
 # install.packages("geosphere")   # Install geosphere package
 #library("geosphere")             # Load geosphere package for distance calculation
 
@@ -109,18 +109,23 @@ CB_usage_long %>%
   theme(text = element_text(size = 20))
 ggsave("Visualizations/bump_plot_ggbump.png", width=21, height=9)
 ```
-Now, calculate actual duration of ride (in minutes) as well as year and month.
+On an aside, it should be noted what percentage of rides originate from regular members vs just casual riders.
 ```{r}
-setDT(CB_Data)[, year := format(as.Date(started_at), "%Y") ]
-setDT(CB_Data)[, month := format(as.Date(started_at), "%m") ]
-CB_Data$duration = as.numeric(
-                              difftime(
-                                CB_Data$ended_at, 
-                                CB_Data$started_at, 
-                                units ="mins"
-                                )
-                              )
-head(CB_Data)
+tot_casual = as.numeric(table(CB_Data$member_casual)[1])
+tot_member = as.numeric(table(CB_Data$member_casual)[2])
+
+jpeg(filename="Visualizations/casual_vs_member.jpg",width=1400,height=1200)
+pie(c(tot_casual, tot_member), 
+    labels = c("Casual","Member"), border="white", 
+    col=c("yellow","red"),
+    cex=5)
+dev.off()
+```
+
+
+Since the table of CitiBike ride data has already been cleaned up to include ride duration (in minutes) and distance traveled (in miles), time to clock the actual speed of the ride (in mph).
+```{r}
+CB_Data$speed = as.numeric(CB_Data$distance / (CB_Data$duration / 60))
 ```
 Figure out the distances being traveled. Since calculating actual roadmap distance through Google Maps or Bing require use of APIs that cost money and place limitations on daily computations, that process shall be forgone in favor of "as the crow flies", which will provide a rough estimate of travel distance in order to figure out speed.
 
