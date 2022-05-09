@@ -121,40 +121,23 @@ pie(c(tot_casual, tot_member),
     cex=5)
 dev.off()
 ```
-
-
 Since the table of CitiBike ride data has already been cleaned up to include ride duration (in minutes) and distance traveled (in miles), time to clock the actual speed of the ride (in mph).
 ```{r}
 CB_Data$speed = as.numeric(CB_Data$distance / (CB_Data$duration / 60))
 ```
-Figure out the distances being traveled. Since calculating actual roadmap distance through Google Maps or Bing require use of APIs that cost money and place limitations on daily computations, that process shall be forgone in favor of "as the crow flies", which will provide a rough estimate of travel distance in order to figure out speed.
-
-Convert meters to miles.
+Now it's time to present data on the average performance of classic vs ebikes.
 ```{r}
-# https://stackoverflow.com/questions/49532911/calculate-distance-longitude-latitude-of-multiple-in-dataframe-r
-CB_Data$distance <- 0.000621371 * distHaversine(
-                              cbind(CB_Data$start_lng, CB_Data$start_lat), 
-                              cbind(CB_Data$end_lng, CB_Data$end_lat) 
-                              )
-head(CB_Data)
-```
-Find the zip codes associated with the coordinate data. This will help with ascertaining neighborhood and borough locations for simplicity.
-```{r}
-CB_Data$start_zip <- revgeo(CB_Data$start_lng, CB_Data$start_lat,
-                            provider = NULL, API = NULL, output = "hash",
-                            item = "zip")
-CB_Data$end_zip <- revgeo(CB_Data$end_lng, CB_Data$end_lat,
-                            provider = NULL, API = NULL, output = "hash",
-                            item = "zip")
-# start_zip <- revgeo(-73.95772, 40.77863,
-#                             provider = NULL, API = NULL, output = "hash",
-#                             item = "zip")
-# end_zip <- revgeo(-73.95578, 40.77280,
-#                             provider = NULL, API = NULL, output = "hash",
-#                             item = "zip")
-# start_zip
-# end_zip
+# Removed junk data regarding speed
+# CB_Mod <- CB_Mod[is.finite(rowSums(CB_Mod)),]
+# But this line of code is producing problems at the moment
+# Error: vector memory exhausted (limit reached?)
 
-head(CB_Data)
-```
+duration_avg_classic = mean(CB_Mod$duration[CB_Mod$rideable_type == "Classic Bike"])
+duration_avg_electric = mean(CB_Mod$duration[CB_Mod$rideable_type == "Electric Bike"])
 
+distance_avg_classic = mean(CB_Mod$distance[CB_Mod$rideable_type == "Classic Bike"])
+distance_avg_electric = mean(CB_Mod$distance[CB_Mod$rideable_type == "Electric Bike"])
+
+speed_avg_classic = distance_avg_classic / (duration_avg_classic / 60)
+speed_avg_electric = distance_avg_electric / (duration_avg_electric / 60)
+```
