@@ -247,3 +247,5 @@ Visualizations/bump_plot_ggbump.png
 Visualizations/casual_vs_member.jpg
 .Rapp.history
 Visualizations/PXL_20220509_132347386.MP.jpg
+*.parquet
+*.zip
