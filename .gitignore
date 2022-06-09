@@ -249,3 +249,11 @@ Visualizations/casual_vs_member.jpg
 Visualizations/PXL_20220509_132347386.MP.jpg
 *.parquet
 *.zip
+.ipynb_checkpoints/CB_Python_clean_file-checkpoint.ipynb
+.ipynb_checkpoints/CB_Python_clean_file-checkpoint.ipynb
+.ipynb_checkpoints/CB_Python_Feature_Engineering-checkpoint.ipynb
+*.dbf
+*.prj
+*.shp
+*.shx
+.ipynb_checkpoints/CB_Python_clean_file-checkpoint.ipynb
