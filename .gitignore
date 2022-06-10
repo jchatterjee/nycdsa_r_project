@@ -257,3 +257,6 @@ Visualizations/PXL_20220509_132347386.MP.jpg
 *.shp
 *.shx
 .ipynb_checkpoints/CB_Python_clean_file-checkpoint.ipynb
+.ipynb_checkpoints/CB_Python_Geolocation-checkpoint.ipynb
+*.cpg
+*.xml
