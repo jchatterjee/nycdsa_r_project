@@ -17,12 +17,10 @@ up until June 2022
 
 The New York City neighborhoods used to map the locations of their respective stations derive
 from a Zillow shapefile available here:
-
 https://www.kaggle.com/datasets/jackcook/neighborhoods-in-new-york
 
 And those from the New Jersey (Hudson County) side have been obtained from shapefiles
 available here:
-
 https://catalog.data.gov/dataset/tiger-line-shapefile-2016-state-new-jersey-current-place-state-based
 
 The following Jupiter notebooks have been used in this order to prepare the data for visualization:
@@ -42,5 +40,4 @@ Finally, to streamline the whole workflow from the notebooks developed above, th
 CB_Full_Service.ipynb
 
 At this point, all future work for the capstone project, which is derived from this one, shall be found at the following location:
-
 https://github.com/jchatterjee/nycdsa_capstone
