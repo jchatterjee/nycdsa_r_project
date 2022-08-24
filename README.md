@@ -20,6 +20,10 @@ Finally, to streamline the whole workflow from the notebooks developed above, th
 
 CB_Full_Service.ipynb
 
+In addition, a duplicate notebook specific to that of electric bikes has been created to utilize a time frame (basically one month later) that has better data on electric bike usage:
+
+CB_Full_Service-eBike.ipynb
+
 At this point, all future work for the capstone project, which is derived from this one, shall be found at the following location:
 https://github.com/jchatterjee/nycdsa_capstone
 
