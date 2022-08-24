@@ -1,5 +1,8 @@
-# nycdsa_r_project
- NYC Data Science Academy R Project (CitiBike)
+# To eBike or Not to eBike?
+NYC Data Science Academy R Project (CitiBike)
+ 
+The purpose of this study was to evaluate the economic feasibility of riding electric bikes within the NYC CitiBike fleet. The full conclusions can be found written here:
+https://nycdatascience.com/blog/student-works/to-ebike-or-not-to-ebike/
 
 The following has been used for the R project, which is being superseded in Python for the capstone
 
