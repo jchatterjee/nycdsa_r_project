@@ -36,6 +36,7 @@ The following has been used for the R project, which is being superseded in Pyth
 unzip_files.r was used for unzipping files
 combine_file.r was used for combining relevant .csv files into one
 clean_file.r was used for cleaning the combined .csv file
+
 JChatterjee_R_Project.Rmd was used for creating the visualizations that were used for the original class presentation which has been superseded by the aforementioned blog article
 
 The New York City neighborhoods used to map the locations of their respective stations derive
