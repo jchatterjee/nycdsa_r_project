@@ -5,7 +5,7 @@ The purpose of this study was to evaluate the economic feasibility of riding ele
 
 https://nycdatascience.com/blog/student-works/to-ebike-or-not-to-ebike/
 
-The following Jupiter notebooks have been used in this order to prepare the data for visualization:
+The following Jupyter notebooks have been used in this order to prepare the data for visualization:
 
 CB_Python_Combine_File.ipynb to combine the separate CitiBike .csv files for each month and export to .parquet
 
